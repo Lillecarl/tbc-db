@@ -34,11 +34,9 @@ before_install:
 script: |-
   git clone https://github.com/Lillecarl/mangos-tbc.git
   cd $TRAVIS_REPO_SLUG
-  cat >  $CONFIG_FILE << EOF
-  DATABASE="mangos"
-  USERNAME="root"
-  PASSWORD="mangos"
-  EOF
+  echo "DATABASE=\"mangos\" >> InstallFullDB.config
+  echo "USERNAME=\"root\" >> InstallFullDB.config
+  echo "PASSWORD=\"mangos\" >> InstallFullDB.config
   cat InstallFullDB.config
   mysql -e "CREATE DATABASE mangos" -u root -pmangos
   ./InstallFullDB.sh
