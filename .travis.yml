@@ -32,10 +32,12 @@ before_install:
   - sudo service mysql restart
 
 script: |-
+  export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
   git clone https://github.com/Lillecarl/mangos-tbc.git
   echo "DATABASE=\"mangos\"" >> InstallFullDB.config
   echo "USERNAME=\"root\"" >> InstallFullDB.config
   echo "PASSWORD=\"mangos\"" >> InstallFullDB.config
+  echo "MYSQL=\"mysql\"" >> InstallFullDB.config
   cat InstallFullDB.config
   mysql -e "CREATE DATABASE mangos" -u root -pmangos
   ./InstallFullDB.sh
