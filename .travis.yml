@@ -34,10 +34,13 @@ before_install:
 script: |-
   git clone https://github.com/Lillecarl/mangos-tbc.git
   cd mangos-tbc
-  export CORE_PATH=$(pwd)
+  export ECORE_PATH=$(pwd)
   echo "Core stored in $CORE_PATH"
   cd $TRAVIS_REPO_SLUG
-  echo "DATABASE=MANGOS
-USERNAME=root
-PASSWORD=mangos" >> InstallFullDB.config
+  cat >  $CONFIG_FILE << EOF
+  DATABASE="mangos"
+  USERNAME="root"
+  PASSWORD="mangos"
+  CORE_PATH=$ECORE_PATH
+  EOF
   cat InstallFullDB.config
