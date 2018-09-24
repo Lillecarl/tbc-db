@@ -1,7 +1,7 @@
 language: minimal
 
 git:
-	depth: 10
+    depth: 10
 
 sudo: false
 
@@ -12,10 +12,10 @@ branches:
     - /^Last_.*/
 
 os:
-	- linux
+    - linux
 
 services:
-	- postgresql
+    - postgresql
 
 addons:
   apt:
@@ -30,3 +30,6 @@ before_install:
   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('mangos') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
   - sudo mysql_upgrade -u root -pmangos
   - sudo service mysql restart
+
+script: |-
+    echo "Success 4.0"
