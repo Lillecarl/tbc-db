@@ -33,9 +33,11 @@ before_install:
 script:
   - docker run -d -p 127.0.0.1:3306:3306 --name mysql mysql -e MYSQL_DATABASE=tbcmangos -e MYSQL_USER=mangos -e MYSQL_PASSWORD=mangos
   - docker run -d -p 127.0.0.1:5432:5432 --name postgres postgres -e POSTGRES_DB=tbcmangos -e POSTGRES_USER=mangos -e POSTGRES_PASSWORD=mangos
-  - echo "Sleeping for 30s"
-  - sleep 30
+  - echo "Sleeping for 10s"
+  - sleep 10
   - docker ps -a
+  - docker logs mysql --details
+  - docker logs postgres --details
   - mysql -h 127.0.0.1 -u mangos -pmangos -e "SHOW DATABASES;"
   - echo "DB_HOST=\"127.0.0.1\"" >> InstallFullDB.config
   - echo "DATABASE=\"mangos\"" >> InstallFullDB.config
