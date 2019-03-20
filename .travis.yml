@@ -1,7 +1,7 @@
 language: minimal
 
 git:
-    depth: 10
+    depth: 1
 
 sudo: false
 
@@ -16,8 +16,8 @@ os:
 
 services:
     - docker
-    - mysql
-    - postgres
+#    - mysql
+#    - postgres
 
 addons:
   apt:
@@ -29,25 +29,26 @@ addons:
 
 
 before_install:
-  - mysql -e 'CREATE DATABASE tbcmangos'
-  - psql -c 'CREATE DATABASE tbcmangos;' -U postgres
-#  - docker pull mysql
-#  - docker pull postgres
-#  - docker run -d -p 3306:3306 --name mysql mysql -e MYSQL_DATABASE=tbcmangos MYSQL_USER=mangos MYSQL_PASSWORD=mangos
-#  - docker run -d -p 5432:5432 --name postgres postgres -e POSTGRES_DB=tbcmangos POSTGRES_USER=mangos POSTGRES_PASSWORD=mangos
+#  - mysql -e 'CREATE DATABASE tbcmangos'
+#  - psql -c 'CREATE DATABASE tbcmangos;' -U postgres
+  - docker pull mysql
+  - docker pull postgres
+  - docker run -d -p 127.0.0.1:3306:3306 --name mysql mysql -e MYSQL_DATABASE=tbcmangos MYSQL_USER=mangos MYSQL_PASSWORD=mangos
+  - docker run -d -p 127.0.0.1:5432:5432 --name postgres postgres -e POSTGRES_DB=tbcmangos POSTGRES_USER=mangos POSTGRES_PASSWORD=mangos
 
 script: |-
   docker ps
-  git clone --depth 1 https://github.com/cmangos/mangos-tbc.git ../mangos-tbc
+  mysql -h 127.0.0.1 -u mangos -pmangos -e "SHOW DATABASES;"
+#  git clone --depth 1 https://github.com/cmangos/mangos-tbc.git ../mangos-tbc
   echo "DB_HOST=\"127.0.0.1\"" >> InstallFullDB.config
   echo "DATABASE=\"mangos\"" >> InstallFullDB.config
-  echo "USERNAME=\"travis\"" >> InstallFullDB.config
+  echo "USERNAME=\"mangos\"" >> InstallFullDB.config
   echo "PASSWORD=\"\"" >> InstallFullDB.config
   echo "MYSQL=\"mysql\"" >> InstallFullDB.config
   cat InstallFullDB.config
   ./InstallFullDB.sh
   mysqldump -h 127.0.0.1 -u mangos -pmangos mangos >> FullDB.sql
-  pgloader mysql://travis@127.0.0.1/tbcmangos pgsql://postgres@127.0.0.1/tbcmangos
+  pgloader mysql://mangos:mangos@127.0.0.1/tbcmangos pgsql://mangos:mangos@127.0.0.1/tbcmangos
   pg_dump -h 127.0.0.1 -u mangos -pmangos mangos > FullDB.bak
   zip License.mdown FullDB.sql FullDB.bak FullDB.zip
   
