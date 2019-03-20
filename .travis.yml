@@ -15,31 +15,43 @@ os:
     - linux
 
 services:
-    - postgresql
+    - docker
 
 addons:
   apt:
-    sources:
-      - mysql-5.7-trusty
+    update: true
     packages:
-      - mysql-server
+      - postgresql-client
       - mysql-client
+      - pgloader
 
 
 before_install:
-  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('mangos') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
-  - sudo mysql_upgrade -u root -pmangos
-  - sudo service mysql restart
+  - docker pull mysql
+  - docker pull postgres
+  - docker run -d -p 127.0.0.1:3306:3306 mysql -e MYSQL_DATABASE=tbcmangos MYSQL_USER=mangos MYSQL_PASSWORD=mangos
+  - docker run -d -p 127.0.0.1:5432:5432 postgres -e POSTGRES_DB=tbcmangos POSTGRES_USER=mangos POSTGRES_PASSWORD=mangos
 
 script: |-
-  export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
-  git clone https://github.com/Lillecarl/mangos-tbc.git
+  git clone --depth 1 https://github.com/cmangos/mangos-tbc.git ../mangos-tbc
+  echo "DB_HOST=\"127.0.0.1\"" >> InstallFullDB.config
   echo "DATABASE=\"mangos\"" >> InstallFullDB.config
-  echo "USERNAME=\"root\"" >> InstallFullDB.config
+  echo "USERNAME=\"mangos\"" >> InstallFullDB.config
   echo "PASSWORD=\"mangos\"" >> InstallFullDB.config
   echo "MYSQL=\"mysql\"" >> InstallFullDB.config
   cat InstallFullDB.config
-  mysql -e "CREATE DATABASE mangos" -u root -pmangos
   ./InstallFullDB.sh
-  mysqldump -u root -pmangos mangos >> FullDB.sql
-  zip License.mdown FullDB.sql FullDB.zip
+  mysqldump -h 127.0.0.1 -u mangos -pmangos mangos >> FullDB.sql
+  pgloader mysql://mangos:mangos@127.0.0.1/tbcmangos pgsql://mangos:mangos@127.0.0.1/mangos
+  pg_dump -h 127.0.0.1 -u mangos -pmangos mangos > FullDB.bak
+  zip License.mdown FullDB.sql FullDB.bak FullDB.zip
+  
+  deploy:
+    provider: releases
+    name: master-latest
+    overwrite: true
+    tag_name: master-latest
+    prerelease: true
+    api_key: "GITHUB OAUTH TOKEN"
+    file: FullDB.zip
+    skip_cleanup: true
