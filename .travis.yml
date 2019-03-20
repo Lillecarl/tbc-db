@@ -3,7 +3,7 @@ language: minimal
 git:
     depth: 1
 
-sudo: true
+sudo: false
 
 dist: xenial
 
@@ -29,10 +29,10 @@ addons:
 before_install:
   - docker pull mysql
   - docker pull postgres
-  - docker run -d -p 127.0.0.1:3306:3306 --name mysql mysql -e MYSQL_DATABASE=tbcmangos -e MYSQL_USER=mangos -e MYSQL_PASSWORD=mangos
-  - docker run -d -p 127.0.0.1:5432:5432 --name postgres postgres -e POSTGRES_DB=tbcmangos -e POSTGRES_USER=mangos -e POSTGRES_PASSWORD=mangos
 
 script:
+  - docker run -d -p 127.0.0.1:3306:3306 --name mysql mysql -e MYSQL_DATABASE=tbcmangos -e MYSQL_USER=mangos -e MYSQL_PASSWORD=mangos
+  - docker run -d -p 127.0.0.1:5432:5432 --name postgres postgres -e POSTGRES_DB=tbcmangos -e POSTGRES_USER=mangos -e POSTGRES_PASSWORD=mangos
   - echo "Sleeping for 30s"
   - sleep 30
   - docker ps
