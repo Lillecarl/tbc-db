@@ -16,8 +16,6 @@ os:
 
 services:
     - docker
-#    - mysql
-#    - postgres
 
 addons:
   apt:
@@ -29,8 +27,6 @@ addons:
 
 
 before_install:
-#  - mysql -e 'CREATE DATABASE tbcmangos'
-#  - psql -c 'CREATE DATABASE tbcmangos;' -U postgres
   - docker pull mysql
   - docker pull postgres
   - docker run -d -p 127.0.0.1:3306:3306 --name mysql mysql -e MYSQL_DATABASE=tbcmangos -e MYSQL_USER=mangos -e MYSQL_PASSWORD=mangos
@@ -39,7 +35,6 @@ before_install:
 script: |-
   docker ps
   mysql -h 127.0.0.1 -u mangos -pmangos -e "SHOW DATABASES;"
-#  git clone --depth 1 https://github.com/cmangos/mangos-tbc.git ../mangos-tbc
   echo "DB_HOST=\"127.0.0.1\"" >> InstallFullDB.config
   echo "DATABASE=\"mangos\"" >> InstallFullDB.config
   echo "USERNAME=\"mangos\"" >> InstallFullDB.config
