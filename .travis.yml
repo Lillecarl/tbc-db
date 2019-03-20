@@ -29,10 +29,11 @@ addons:
 before_install:
   - docker pull mysql
   - docker pull postgres
-  - docker run -d -p 127.0.0.1:3306:3306 mysql -e MYSQL_DATABASE=tbcmangos MYSQL_USER=mangos MYSQL_PASSWORD=mangos
-  - docker run -d -p 127.0.0.1:5432:5432 postgres -e POSTGRES_DB=tbcmangos POSTGRES_USER=mangos POSTGRES_PASSWORD=mangos
+  - docker run -d -p 3306:3306 mysql -e MYSQL_DATABASE=tbcmangos MYSQL_USER=mangos MYSQL_PASSWORD=mangos
+  - docker run -d -p 5432:5432 postgres -e POSTGRES_DB=tbcmangos POSTGRES_USER=mangos POSTGRES_PASSWORD=mangos
 
 script: |-
+  docker ps
   git clone --depth 1 https://github.com/cmangos/mangos-tbc.git ../mangos-tbc
   echo "DB_HOST=\"127.0.0.1\"" >> InstallFullDB.config
   echo "DATABASE=\"mangos\"" >> InstallFullDB.config
@@ -42,7 +43,7 @@ script: |-
   cat InstallFullDB.config
   ./InstallFullDB.sh
   mysqldump -h 127.0.0.1 -u mangos -pmangos mangos >> FullDB.sql
-  pgloader mysql://mangos:mangos@127.0.0.1/tbcmangos pgsql://mangos:mangos@127.0.0.1/mangos
+  pgloader mysql://mangos:mangos@127.0.0.1/tbcmangos pgsql://mangos:mangos@127.0.0.1/tbcmangos
   pg_dump -h 127.0.0.1 -u mangos -pmangos mangos > FullDB.bak
   zip License.mdown FullDB.sql FullDB.bak FullDB.zip
   
