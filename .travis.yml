@@ -41,6 +41,7 @@ script:
   - echo "DATABASE=\"tbcmangos\"" >> InstallFullDB.config
   - echo "USERNAME=\"mangos\"" >> InstallFullDB.config
   - echo "PASSWORD=\"mangos\"" >> InstallFullDB.config
+  - echo "MYSQL=\"mysql\"" >> InstallFullDB.config
   - echo "CORE_PATH=\"${pwd}/mangos-tbc\"" >> InstallFullDB.config
   - cat InstallFullDB.config
   - ./InstallFullDB.sh
