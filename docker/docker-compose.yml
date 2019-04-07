@@ -1,6 +1,7 @@
 version: '3'
 services:
     pgloader:
+        container_name: pgloader
         build: .
         networks:
             testing_net:
