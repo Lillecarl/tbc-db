@@ -46,7 +46,7 @@ script:
   - cat InstallFullDB.config
   - ./InstallFullDB.sh
   - mysqldump -h 127.0.0.1 -u mangos -pmangos tbcmangos >> FullDB.sql
-  - pgloader mysql://mangos:mangos@127.0.0.1/tbcmangos pgsql://mangos:mangos@127.0.0.1/tbcmangos
+  - pgloader --with right-trim mysql://mangos:mangos@127.0.0.1/tbcmangos pgsql://mangos:mangos@127.0.0.1/tbcmangos
   - pg_dump -h 127.0.0.1 -u mangos -pmangos tbcmangos > FullDB.bak
   - zip License.mdown FullDB.sql FullDB.bak FullDB.zip
   
