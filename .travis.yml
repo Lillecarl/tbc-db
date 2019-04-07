@@ -40,7 +40,6 @@ script:
 before_deploy:
  - git config --local user.name "Travis BuildBot"
  - git config --local user.email "noreply@travis-ci.org"
- - git push --delete origin development 
  - git tag -d development
  - export TRAVIS_TAG=development
  - git tag $TRAVIS_TAG
