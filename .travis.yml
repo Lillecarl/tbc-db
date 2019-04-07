@@ -46,8 +46,8 @@ script:
   - cat InstallFullDB.config
   - ./InstallFullDB.sh
   - mysqldump -h 127.0.0.1 -u mangos -pmangos tbcmangos >> FullDB.sql
-  - pgloader -v mysql://mangos:mangos@127.0.0.1/tbcmangos pgsql://mangos:mangos@127.0.0.1/tbcmangos
-  - pg_dump -h 127.0.0.1 -u mangos -pmangos tbcmangos > FullDB.bak
+  - docker run dimitri/pgloader pgloader -v mysql://mangos:mangos@127.0.0.1/tbcmangos pgsql://mangos:mangos@127.0.0.1/tbcmangos
+  - pg_dump -h 127.0.0.1 -U mangos -pmangos tbcmangos > FullDB.bak
   - zip License.mdown FullDB.sql FullDB.bak FullDB.zip
   
 deploy:
