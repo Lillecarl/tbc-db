@@ -1,63 +1,53 @@
 language: minimal
-
 git:
-    depth: 1
-
+  depth: 1
 sudo: false
-
 dist: xenial
-
 branches:
   except:
-    - /^Last_.*/
-
+  - "/^Last_.*/"
 os:
-    - linux
-
+- linux
 services:
-    - docker
-
+- docker
 addons:
   apt:
     update: true
     packages:
-      - postgresql-client
-      - mysql-client
-      - pgloader
-      - docker-compose
-
-
+    - postgresql-client
+    - mysql-client
+    - pgloader
+    - docker-compose
 before_install:
-  - docker pull mysql
-  - docker pull postgres
-
+- docker pull mysql
+- docker pull postgres
 script:
-  - git clone --depth 1 https://github.com/cmangos/mangos-tbc.git
-  - cd docker;docker-compose up -d; cd ..
-  - echo "Sleeping for 10s waiting for containers to spin up"
-  - sleep 10
-  - mysql -h 127.0.0.1 -u mangos -pmangos -e "SHOW DATABASES;"
-  - echo "DB_HOST=\"127.0.0.1\"" >> InstallFullDB.config
-  - echo "DATABASE=\"tbcmangos\"" >> InstallFullDB.config
-  - echo "USERNAME=\"mangos\"" >> InstallFullDB.config
-  - echo "PASSWORD=\"mangos\"" >> InstallFullDB.config
-  - echo "MYSQL=\"mysql\"" >> InstallFullDB.config
-  - echo "CORE_PATH=\"./mangos-tbc\"" >> InstallFullDB.config
-  - cat InstallFullDB.config
-  - ./InstallFullDB.sh
-  - mysqldump -h 127.0.0.1 -u mangos -pmangos tbcmangos >> FullDB.sql
-  - docker exec pgloader pgloader -v mysql://mangos:mangos@172.28.1.3/tbcmangos pgsql://mangos:mangos@172.28.1.4/tbcmangos
-  - PGPASSWORD=mangos pg_dump -Fc -h 127.0.0.1 -U mangos -d tbcmangos > FullDB.bak
-  - zip License.mdown FullDB.sql FullDB.bak FullDB.zip
-  
+- git clone --depth 1 https://github.com/cmangos/mangos-tbc.git
+- cd docker;docker-compose up -d; cd ..
+- echo "Sleeping for 10s waiting for containers to spin up"
+- sleep 10
+- mysql -h 127.0.0.1 -u mangos -pmangos -e "SHOW DATABASES;"
+- echo "DB_HOST=\"127.0.0.1\"" >> InstallFullDB.config
+- echo "DATABASE=\"tbcmangos\"" >> InstallFullDB.config
+- echo "USERNAME=\"mangos\"" >> InstallFullDB.config
+- echo "PASSWORD=\"mangos\"" >> InstallFullDB.config
+- echo "MYSQL=\"mysql\"" >> InstallFullDB.config
+- echo "CORE_PATH=\"./mangos-tbc\"" >> InstallFullDB.config
+- cat InstallFullDB.config
+- "./InstallFullDB.sh"
+- mysqldump -h 127.0.0.1 -u mangos -pmangos tbcmangos >> FullDB.sql
+- docker exec pgloader pgloader -v mysql://mangos:mangos@172.28.1.3/tbcmangos pgsql://mangos:mangos@172.28.1.4/tbcmangos
+- PGPASSWORD=mangos pg_dump -Fc -h 127.0.0.1 -U mangos -d tbcmangos > FullDB.bak
+- zip License.mdown FullDB.sql FullDB.bak FullDB.zip
+
+
 deploy:
   provider: releases
-  name: master-latest
   overwrite: true
   draft: true
-  tag_name: master-latest
   prerelease: true
   api_key:
-    secure: API_KEY_ENCRYPTED
+    secure: TJmfPi18EsQKYs1iAtQ+av3bO8hMdhshefjPNEgjvLgluCxkJCBqadOMHkNfF1gxqEfPJ1IJQ6rFVo3Hr8VOkScQafsUtG3z6Nc/cvW+Ai5BWkOZYxS8kfKtA6/w6ZHK1mJjcgiHwWxrgE7Fe58YGN4xLLqfl1O3xkcSMW+gzL3X508AreG41A0S/T/8ZiMLTe13gWkGgKyNHoXpuu3fo2Ow+9ch3eAGTOanaGDARRXOj2g7ze9/Yeq8+JKS9nFxUb52t36KCtdw7E9zkVpnsWQ7fu/hi9/EGmPLO81qB8QPw5/pcUS8yaP/Q5ABL8AoC0Ei0KqVAWRhL6oUbpnmGnb43R46nBBriF9/nPwEqc6V7qCsPGMVfcQweuhsebt3mgKef4ar/opEZWhbSk6RA/bxHNPPY1FJ+xRVPi/UW5XA0W1JtuzUFQUH1mFPcdzNrYmcnDuzq8mx30bpp4y0LYDU6UgWwE4FaNK3+qkAYgGXJQr6EVQkO79SeSyFZvtlw6FeFhqjb1jjcIU76tStVNQl8W52urDgPqoYSYbYlLgBwiuH2tP38YthI0dYmspmWNIdpc8dwuANmUUQWRhF5kD6fD3d7RyMXO8nwCdwgYgyeKkPBqrIw5xDVkCjowJhwRxZ0M+4VoCewUy/pOc3IZwE/yg1JhtqoJB/RC0NKYc=
   file: FullDB.zip
-  skip_cleanup: true
+  on:
+    repo: Lillecarl/tbc-db
