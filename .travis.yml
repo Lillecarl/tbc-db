@@ -34,8 +34,8 @@ before_install:
 script:
   - git clone --depth 1 https://github.com/cmangos/mangos-tbc.git
   - cd docker;docker-compose up -d; cd ..
-  - echo "Sleeping for 60s waiting for containers to spin up"
-  - sleep 60
+  - echo "Sleeping for 10s waiting for containers to spin up"
+  - sleep 10
   - mysql -h 127.0.0.1 -u mangos -pmangos -e "SHOW DATABASES;"
   - echo "DB_HOST=\"127.0.0.1\"" >> InstallFullDB.config
   - echo "DATABASE=\"tbcmangos\"" >> InstallFullDB.config
@@ -45,9 +45,9 @@ script:
   - echo "CORE_PATH=\"./mangos-tbc\"" >> InstallFullDB.config
   - cat InstallFullDB.config
   - ./InstallFullDB.sh
-  - mysqldump -h 127.0.0.1 -u mangos -pmangos mangos >> FullDB.sql
+  - mysqldump -h 127.0.0.1 -u mangos -pmangos tbcmangos >> FullDB.sql
   - pgloader mysql://mangos:mangos@127.0.0.1/tbcmangos pgsql://mangos:mangos@127.0.0.1/tbcmangos
-  - pg_dump -h 127.0.0.1 -u mangos -pmangos mangos > FullDB.bak
+  - pg_dump -h 127.0.0.1 -u mangos -pmangos tbcmangos > FullDB.bak
   - zip License.mdown FullDB.sql FullDB.bak FullDB.zip
   
 deploy:
