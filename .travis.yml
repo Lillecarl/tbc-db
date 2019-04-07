@@ -8,6 +8,11 @@ branches:
   - "/^Last_.*/"
 os:
 - linux
+env:
+  global:
+    - OWNER=${TRAVIS_REPO_SLUG%/*}
+    - BRANCH=${TRAVIS_BRANCH/master/}
+    - TAG=${BRANCH:+_}${BRANCH}
 services:
 - docker
 addons:
@@ -40,9 +45,11 @@ script:
 before_deploy:
  - git config --local user.name "Travis BuildBot"
  - git config --local user.email "noreply@travis-ci.org"
- - git tag -d development
- - export TRAVIS_TAG=development
- - git tag $TRAVIS_TAG
+ - git tag -f travis-${TAG}-build
+ - git remote add gh https://${OWNER}:${GITHUB_API_KEY}@github.com/${TRAVIS_REPO_SLUG}.git
+ - git push gh :travis-${TAG}-build || true
+ - git push -f gh travis-${TAG}-build
+ - git remote remove gh
 deploy:
   provider: releases
   overwrite: true
@@ -51,5 +58,6 @@ deploy:
   api_key:
     secure: TJmfPi18EsQKYs1iAtQ+av3bO8hMdhshefjPNEgjvLgluCxkJCBqadOMHkNfF1gxqEfPJ1IJQ6rFVo3Hr8VOkScQafsUtG3z6Nc/cvW+Ai5BWkOZYxS8kfKtA6/w6ZHK1mJjcgiHwWxrgE7Fe58YGN4xLLqfl1O3xkcSMW+gzL3X508AreG41A0S/T/8ZiMLTe13gWkGgKyNHoXpuu3fo2Ow+9ch3eAGTOanaGDARRXOj2g7ze9/Yeq8+JKS9nFxUb52t36KCtdw7E9zkVpnsWQ7fu/hi9/EGmPLO81qB8QPw5/pcUS8yaP/Q5ABL8AoC0Ei0KqVAWRhL6oUbpnmGnb43R46nBBriF9/nPwEqc6V7qCsPGMVfcQweuhsebt3mgKef4ar/opEZWhbSk6RA/bxHNPPY1FJ+xRVPi/UW5XA0W1JtuzUFQUH1mFPcdzNrYmcnDuzq8mx30bpp4y0LYDU6UgWwE4FaNK3+qkAYgGXJQr6EVQkO79SeSyFZvtlw6FeFhqjb1jjcIU76tStVNQl8W52urDgPqoYSYbYlLgBwiuH2tP38YthI0dYmspmWNIdpc8dwuANmUUQWRhF5kD6fD3d7RyMXO8nwCdwgYgyeKkPBqrIw5xDVkCjowJhwRxZ0M+4VoCewUy/pOc3IZwE/yg1JhtqoJB/RC0NKYc=
   file: FullDB.zip
+  target_commitish: $TRAVIS_COMMIT
   on:
     repo: Lillecarl/tbc-db
