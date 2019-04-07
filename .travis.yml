@@ -24,6 +24,7 @@ addons:
       - postgresql-client
       - mysql-client
       - pgloader
+      - docker-compose
 
 
 before_install:
@@ -31,18 +32,16 @@ before_install:
   - docker pull postgres
 
 script:
-  - docker run -d -p 127.0.0.1:3306:33060 --name mysql -e MYSQL_DATABASE=tbcmangos -e MYSQL_USER=mangos -e MYSQL_PASSWORD=mangos -e MYSQL_ROOT_PASSWORD=mangos mysql
-  - docker run -d -p 127.0.0.1:5432:5432 --name postgres -e POSTGRES_DB=tbcmangos -e POSTGRES_USER=mangos -e POSTGRES_PASSWORD=mangos postgres
+  - git clone --depth 1 https://github.com/cmangos/mangos-tbc.git
+  - cd docker;docker-compose up -d; cd ..
   - echo "Sleeping for 60s waiting for containers to spin up"
   - sleep 60
-  - docker ps -a
-  - docker logs mysql --details
-  - docker logs postgres --details
   - mysql -h 127.0.0.1 -u mangos -pmangos -e "SHOW DATABASES;"
   - echo "DB_HOST=\"127.0.0.1\"" >> InstallFullDB.config
   - echo "DATABASE=\"tbcmangos\"" >> InstallFullDB.config
   - echo "USERNAME=\"mangos\"" >> InstallFullDB.config
   - echo "PASSWORD=\"mangos\"" >> InstallFullDB.config
+  - echo "CORE_PATH=\"${pwd}/mangos-tbc\"" >> InstallFullDB.config
   - cat InstallFullDB.config
   - ./InstallFullDB.sh
   - mysqldump -h 127.0.0.1 -u mangos -pmangos mangos >> FullDB.sql
