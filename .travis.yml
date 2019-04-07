@@ -37,7 +37,11 @@ script:
 - mysqldump -h 127.0.0.1 -u mangos -pmangos tbcmangos >> FullDB.sql
 - PGPASSWORD=mangos pg_dump -Fc -h 127.0.0.1 -U mangos -d tbcmangos > FullDB.bak
 - zip FullDB.zip FullDB.bak FullDB.sql LICENSE.md 
-
+before_deploy:
+ - git config --local user.name "Travis BuildBot"
+ - git config --local user.email "noreply@travis-ci.org"
+ - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+ - git tag $TRAVIS_TAG
 deploy:
   provider: releases
   overwrite: true
