@@ -40,10 +40,9 @@ script:
   - docker logs postgres --details
   - mysql -h 127.0.0.1 -u mangos -pmangos -e "SHOW DATABASES;"
   - echo "DB_HOST=\"127.0.0.1\"" >> InstallFullDB.config
-  - echo "DATABASE=\"mangos\"" >> InstallFullDB.config
+  - echo "DATABASE=\"tbcmangos\"" >> InstallFullDB.config
   - echo "USERNAME=\"mangos\"" >> InstallFullDB.config
-  - echo "PASSWORD=\"\"" >> InstallFullDB.config
-  - echo "MYSQL=\"mysql\"" >> InstallFullDB.config
+  - echo "PASSWORD=\"mangos\"" >> InstallFullDB.config
   - cat InstallFullDB.config
   - ./InstallFullDB.sh
   - mysqldump -h 127.0.0.1 -u mangos -pmangos mangos >> FullDB.sql
