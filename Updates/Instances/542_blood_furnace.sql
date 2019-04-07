@@ -4,6 +4,8 @@ DBScriptName: instance_blood_furnace
 DB%Complete: 80
 DBComment:
 * ai second boss adds aggro drop ability, spell scripting for second boss aoe ability (scaling)
+* Core Issue: Pooling overwrites spawnmask making it possible to have heroic chest in normal, chests need some sort of chanced solution where the maxchance of a pool might be below 100%
+* Sniff shows different id for @CGUID+35 = 17395, +44 = 17414, +86 = 17395, +46 = 17414
 EndDBScriptData */
 
 SET @CGUID := 5420000; -- creatures
@@ -195,6 +197,8 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_fl
 (@CGUID+66, 0, 0, 1, 16, 13, 0, NULL), -- Nascent Fel Orc
 (@CGUID+68, 0, 0, 1, 16, 13, 0, NULL), -- Nascent Fel Orc
 (@CGUID+75, 0, 0, 1, 16, 13, 0, NULL), -- Nascent Fel Orc
+(@CGUID+79, 0, 0, 0, 0, 333, 0, NULL), -- Felguard Annihilator
+(@CGUID+81, 0, 0, 0, 0, 333, 0, NULL), -- Felguard Annihilator
 (@CGUID+85, 0, 0, 0, 16, 69, 0, NULL), -- Shadowmoon Technician
 (@CGUID+87, 0, 0, 1, 16, 0, 0, '31059'), -- Shadowmoon Technician
 (@CGUID+88, 0, 0, 0, 16, 69, 0, NULL), -- Shadowmoon Technician
@@ -215,123 +219,72 @@ REPLACE INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_sheath
 
 INSERT INTO `creature_linking` (`guid`, `master_guid`, `flag`) VALUES
 (@CGUID+12, @CGUID+9, 1167), -- Laughing Skull Enforcer -> Laughing Skull Enforcer
--- (@CGUID+9, @CGUID+38, 1024), -- Laughing Skull Enforcer -> The Maker
 (@CGUID+52, @CGUID+166, 1167), -- Shadowmoon Adept -> Hellfire Imp
 (@CGUID+48, @CGUID+166, 1167), -- Shadowmoon Adept -> Hellfire Imp
--- (@CGUID+166, @CGUID+38, 1024), -- Hellfire Imp -> The Maker
 (@CGUID+47, @CGUID+167, 1167), -- Shadowmoon Adept -> Hellfire Imp
 (@CGUID+50, @CGUID+167, 1167), -- Shadowmoon Adept -> Hellfire Imp
--- (@CGUID+167, @CGUID+38, 1024), -- Hellfire Imp -> The Maker
 (@CGUID+51, @CGUID+165, 1167), -- Shadowmoon Adept -> Hellfire Imp
 (@CGUID+53, @CGUID+165, 1167), -- Shadowmoon Adept -> Hellfire Imp
--- (@CGUID+165, @CGUID+38, 1024), -- Hellfire Imp -> The Maker
 (@CGUID+7, @CGUID+10, 1167), -- Laughing Skull Enforcer -> Laughing Skull Enforcer
--- (@CGUID+10, @CGUID+38, 1024), -- Laughing Skull Enforcer -> The Maker
--- (@CGUID+171, @CGUID+38, 1024), -- Laughing Skull Rogue -> The Maker
--- (@CGUID+173, @CGUID+38, 1024), -- Laughing Skull Rogue -> The Maker
--- (@CGUID+174, @CGUID+38, 1024), -- Laughing Skull Rogue -> The Maker
 (@CGUID+11, @CGUID+6, 1167), -- Laughing Skull Enforcer -> Laughing Skull Enforcer
--- (@CGUID+6, @CGUID+38, 1024), -- Laughing Skull Enforcer -> The Maker
 (@CGUID+49, @CGUID+169, 1167), -- Shadowmoon Adept -> Hellfire Imp
 (@CGUID+54, @CGUID+169, 1167), -- Shadowmoon Adept -> Hellfire Imp
--- (@CGUID+169, @CGUID+38, 1024), -- Hellfire Imp -> The Maker
 (@CGUID+55, @CGUID+168, 1167), -- Shadowmoon Adept -> Hellfire Imp
 (@CGUID+56, @CGUID+168, 1167), -- Shadowmoon Adept -> Hellfire Imp
--- (@CGUID+168, @CGUID+38, 1024), -- Hellfire Imp -> The Maker
 (@CGUID+57, @CGUID+170, 1167), -- Shadowmoon Adept -> Hellfire Imp
 (@CGUID+58, @CGUID+170, 1167), -- Shadowmoon Adept -> Hellfire Imp
--- (@CGUID+170, @CGUID+38, 1024), -- Hellfire Imp -> The Maker
--- (@CGUID+21, @CGUID+38, 1024), -- Shadowmoon Warlock -> The Maker
 (@CGUID+8, @CGUID+183, 1167), -- Laughing Skull Enforcer -> Laughing Skull Legionnaire
--- (@CGUID+183, @CGUID+38, 1024), -- Laughing Skull Legionnaire -> The Maker
 (@CGUID+13, @CGUID+184, 1167), -- Laughing Skull Enforcer -> Laughing Skull Legionnaire
--- (@CGUID+184, @CGUID+38, 1024), -- Laughing Skull Legionnaire -> The Maker
--- (@CGUID+177, @CGUID+38, 1024), -- Laughing Skull Rogue -> The Maker
--- (@CGUID+22, @CGUID+38, 1024), -- Shadowmoon Warlock -> The Maker
 (@CGUID+59, @CGUID+40, 1167), -- Shadowmoon Adept -> Shadowmoon Summoner
 (@CGUID+60, @CGUID+40, 1167), -- Shadowmoon Adept -> Shadowmoon Summoner
--- (@CGUID+40, @CGUID+38, 1024), -- Shadowmoon Summoner -> The Maker
 (@CGUID+42, @CGUID+41, 1167), -- Shadowmoon Summoner -> Shadowmoon Summoner
 (@CGUID+61, @CGUID+41, 1167), -- Shadowmoon Adept -> Shadowmoon Summoner
--- (@CGUID+41, @CGUID+38, 1024), -- Shadowmoon Summoner -> The Maker
 (@CGUID+14, @CGUID+15, 1167), -- Laughing Skull Enforcer -> Laughing Skull Enforcer
--- (@CGUID+15, @CGUID+38, 1024), -- Laughing Skull Enforcer -> The Maker
 (@CGUID+188, @CGUID+181, 1679), -- Laughing Skull Legionnaire -> Laughing Skull Warden
--- (@CGUID+181, @CGUID+38, 1024), -- Laughing Skull Warden -> The Maker
 (@CGUID+187, @CGUID+20, 1679), -- Laughing Skull Legionnaire -> Shadowmoon Warlock
--- (@CGUID+20, @CGUID+38, 1024), -- Shadowmoon Warlock -> The Maker
 (@CGUID+96, @CGUID+46, 1167), -- Shadowmoon Technician -> Shadowmoon Summoner
--- (@CGUID+46, @CGUID+38, 1024), -- Shadowmoon Summoner -> The Maker
 (@CGUID+83, @CGUID+39, 1167), -- Shadowmoon Technician -> Shadowmoon Summoner
--- (@CGUID+39, @CGUID+38, 1024), -- Shadowmoon Summoner -> The Maker
 (@CGUID+84, @CGUID+82, 1167), -- Shadowmoon Technician -> Shadowmoon Technician
--- (@CGUID+82, @CGUID+38, 1024), -- Shadowmoon Technician -> The Maker
 (@CGUID+16, @CGUID+17, 1679), -- Laughing Skull Enforcer -> Laughing Skull Enforcer
--- (@CGUID+17, @CGUID+37, 1024), -- Laughing Skull Enforcer -> Broggok
--- (@CGUID+175, @CGUID+37, 1024), -- Laughing Skull Rogue -> Broggok
--- (@CGUID+179, @CGUID+37, 1024), -- Laughing Skull Rogue -> Broggok
 (@CGUID+65, @CGUID+85, 1167), -- Nascent Fel Orc -> Shadowmoon Technician
 (@CGUID+88, @CGUID+85, 1167), -- Shadowmoon Technician -> Shadowmoon Technician
--- (@CGUID+85, @CGUID+37, 1024), -- Shadowmoon Technician -> Broggok
 (@CGUID+67, @CGUID+92, 1167), -- Nascent Fel Orc -> Shadowmoon Technician
 (@CGUID+90, @CGUID+92, 1167), -- Shadowmoon Technician -> Shadowmoon Technician
--- (@CGUID+92, @CGUID+37, 1024), -- Shadowmoon Technician -> Broggok
 (@CGUID+32, @CGUID+68, 1167), -- Shadowmoon Warlock -> Nascent Fel Orc
 (@CGUID+45, @CGUID+68, 1167), -- Shadowmoon Summoner -> Nascent Fel Orc
--- (@CGUID+68, @CGUID+37, 1024), -- Nascent Fel Orc -> Broggok
 (@CGUID+33, @CGUID+75, 1167), -- Shadowmoon Warlock -> Nascent Fel Orc
 (@CGUID+34, @CGUID+75, 1167), -- Shadowmoon Warlock -> Nascent Fel Orc
--- (@CGUID+75, @CGUID+37, 1024), -- Nascent Fel Orc -> Broggok
 (@CGUID+18, @CGUID+19, 1679), -- Laughing Skull Enforcer -> Laughing Skull Enforcer
--- (@CGUID+19, @CGUID+37, 1024), -- Laughing Skull Enforcer -> Broggok
 (@CGUID+73, @CGUID+94, 1167), -- Nascent Fel Orc -> Shadowmoon Technician
 (@CGUID+95, @CGUID+94, 1167), -- Shadowmoon Technician -> Shadowmoon Technician
--- (@CGUID+94, @CGUID+37, 1024), -- Shadowmoon Technician -> Broggok
--- (@CGUID+178, @CGUID+37, 1024), -- Laughing Skull Rogue -> Broggok
 (@CGUID+185, @CGUID+182, 1679), -- Laughing Skull Legionnaire -> Laughing Skull Warden
 (@CGUID+186, @CGUID+182, 1679), -- Laughing Skull Legionnaire -> Laughing Skull Warden
--- (@CGUID+182, @CGUID+37, 1024), -- Laughing Skull Rogue -> Broggok
 (@CGUID+44, @CGUID+35, 1167), -- Shadowmoon Summoner -> Shadowmoon Warlock
 (@CGUID+86, @CGUID+35, 1167), -- Shadowmoon Technician -> Shadowmoon Warlock
--- (@CGUID+35, @CGUID+37, 1024), -- Shadowmoon Warlock -> Broggok
 (@CGUID+89, @CGUID+91, 1167), -- Shadowmoon Technician -> Shadowmoon Technician
 (@CGUID+93, @CGUID+91, 1167), -- Shadowmoon Technician -> Shadowmoon Technician
--- (@CGUID+91, @CGUID+37, 1024), -- Shadowmoon Technician -> Broggok
 (@CGUID+31, @CGUID+66, 1167), -- Shadowmoon Warlock -> Nascent Fel Orc
 (@CGUID+87, @CGUID+66, 1167), -- Shadowmoon Technician -> Nascent Fel Orc
--- (@CGUID+66, @CGUID+37, 1024), -- Nascent Fel Orc -> Broggok
 (@CGUID+26, @CGUID+144, 1167), -- Shadowmoon Warlock -> Fel Orc Neophyte
 (@CGUID+43, @CGUID+144, 1167), -- Shadowmoon Summoner -> Fel Orc Neophyte
--- (@CGUID+144, @CGUID+37, 1024), -- Nascent Fel Orc -> Broggok
 (@CGUID+28, @CGUID+30, 1679), -- Shadowmoon Warlock -> Shadowmoon Warlock
 (@CGUID+204, @CGUID+30, 1679), -- Hellfire Familiar -> Shadowmoon Warlock
 (@CGUID+205, @CGUID+30, 1679), -- Hellfire Familiar -> Shadowmoon Warlock
 (@CGUID+206, @CGUID+30, 1679), -- Hellfire Familiar -> Shadowmoon Warlock
--- (@CGUID+30, @CGUID+36, 1024), -- Shadowmoon Warlock -> Keli'dan the Breaker
 (@CGUID+27, @CGUID+197, 1679), -- Shadowmoon Warlock -> Felguard Brute
--- (@CGUID+197, @CGUID+36, 1024), -- Felguard Brute -> Keli'dan the Breaker
--- (@CGUID+172, @CGUID+36, 1024), -- Laughing Skull Rogue -> Keli'dan the Breaker
--- (@CGUID+176, @CGUID+36, 1024), -- Laughing Skull Rogue -> Keli'dan the Breaker
 (@CGUID+29, @CGUID+196, 1679), -- Shadowmoon Warlock -> Felguard Brute
--- (@CGUID+196, @CGUID+36, 1024), -- Felguard Brute -> Keli'dan the Breaker
 (@CGUID+195, @CGUID+194, 1167), -- Felguard Brute -> Felguard Brute
--- (@CGUID+194, @CGUID+36, 1024), -- Felguard Brute -> Keli'dan the Breaker
 (@CGUID+198, @CGUID+23, 1167), -- Hellfire Familiar -> Shadowmoon Warlock
 (@CGUID+199, @CGUID+23, 1167), -- Hellfire Familiar -> Shadowmoon Warlock
 (@CGUID+200, @CGUID+23, 1167), -- Hellfire Familiar -> Shadowmoon Warlock
 (@CGUID+201, @CGUID+23, 1167), -- Hellfire Familiar -> Shadowmoon Warlock
 (@CGUID+202, @CGUID+23, 1167), -- Hellfire Familiar -> Shadowmoon Warlock
 (@CGUID+203, @CGUID+23, 1167), -- Hellfire Familiar -> Shadowmoon Warlock
--- (@CGUID+23, @CGUID+36, 1024), -- Shadowmoon Warlock -> Keli'dan the Breaker
--- (@CGUID+180, @CGUID+36, 1024), -- Laughing Skull Rogue -> Keli'dan the Breaker
 (@CGUID+81, @CGUID+79, 1167), -- Felguard Annihilator -> Felguard Annihilator
--- (@CGUID+79, @CGUID+36, 1024), -- Felguard Annihilator -> Keli'dan the Breaker
 (@CGUID+77, @CGUID+25, 1167), -- Felguard Annihilator -> Shadowmoon Warlock
 (@CGUID+80, @CGUID+25, 1167), -- Felguard Annihilator -> Shadowmoon Warlock
--- (@CGUID+25, @CGUID+36, 1024), -- Shadowmoon Warlock -> Keli'dan the Breaker
 (@CGUID+76, @CGUID+24, 1167), -- Felguard Annihilator -> Shadowmoon Warlock
 (@CGUID+78, @CGUID+24, 1167); -- Felguard Annihilator -> Shadowmoon Warlock
--- (@CGUID+24, @CGUID+36, 1024); -- Shadowmoon Warlock -> Keli'dan the Breaker
 
 -- INSERT INTO `creature_linking_template` (`entry`, `map`, `master_entry`, `flag`, `search_range`) VALUES
 
@@ -362,7 +315,7 @@ INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `positio
 (@CGUID+24, 17371, 542, 3, 317.703, -172.405, -25.4257, 6.10865, 7200, 7200, 0, 0, 0, 2), -- Shadowmoon Warlock
 (@CGUID+25, 17371, 542, 3, 328.897, -188.367, -25.4252, 1.50098, 7200, 7200, 0, 0, 0, 2), -- Shadowmoon Warlock
 (@CGUID+26, 17371, 542, 3, 445.659, 61.7842, 9.6945, 4.32842, 7200, 7200, 0, 0, 0, 0), -- Shadowmoon Warlock
-(@CGUID+27, 17371, 542, 3, 490.501, -7.73751, 9.56211, 0.522235, 7200, 7200, 0, 0, 0, 2), -- Shadowmoon Warlock
+(@CGUID+27, 17371, 542, 3, 490.501, -7.73751, 9.56211, 0.522235, 7200, 7200, 0, 0, 0, 0), -- Shadowmoon Warlock
 (@CGUID+28, 17371, 542, 3, 494.708, 3.53913, 9.6299, 2.89725, 7200, 7200, 0, 0, 0, 0), -- Shadowmoon Warlock
 (@CGUID+29, 17371, 542, 3, 488.784, -75.9049, 9.55539, 1.88176, 7200, 7200, 0, 0, 0, 0), -- Shadowmoon Warlock
 (@CGUID+30, 17371, 542, 3, 488.798, 14.6936, 9.63497, 4.4855, 7200, 7200, 0, 0, 0, 0), -- Shadowmoon Warlock
@@ -397,7 +350,7 @@ INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `positio
 (@CGUID+59, 17397, 542, 3, 317.735, 9.34628, 9.70236, 2.16421, 7200, 7200, 0, 0, 0, 0), -- Shadowmoon Adept
 (@CGUID+60, 17397, 542, 3, 317.887, 15.2039, 9.70386, 3.9968, 7200, 7200, 0, 0, 0, 2), -- Shadowmoon Adept
 (@CGUID+61, 17397, 542, 3, 342.892, 8.10405, 9.7048, 3.00197, 7200, 7200, 0, 0, 0, 2), -- Shadowmoon Adept
-(@CGUID+62, 17398, 542, 3, 411.776, 84.2264, 9.65481, 6.18492, 7200, 7200, 0, 0, 0, 0), -- Nascent Fel Orc
+(@CGUID+62, 17398, 542, 3, 414.598, 112.5374, 9.733525, 0.1396263, 7200, 7200, 0, 0, 0, 0), -- Nascent Fel Orc
 (@CGUID+63, 17398, 542, 3, 416.168, 84.3904, 9.72884, 3.38594, 7200, 7200, 0, 0, 0, 0), -- Nascent Fel Orc
 (@CGUID+64, 17398, 542, 3, 410.792, 87.0815, 9.74017, 4.5204, 7200, 7200, 0, 0, 0, 0), -- Nascent Fel Orc
 (@CGUID+65, 17398, 542, 3, 314.581, 195.748, 11.4755, 5.06145, 7200, 7200, 0, 0, 0, 0), -- Nascent Fel Orc
@@ -542,45 +495,48 @@ INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `positio
 (@CGUID+204, 19016, 542, 3, 488.286, 1.74285, 9.62832, 1.0472, 7200, 7200, 0, 0, 0, 0), -- Hellfire Familiar
 (@CGUID+205, 19016, 542, 3, 489.538, 8.01556, 9.62866, 3.59538, 7200, 7200, 0, 0, 0, 0), -- Hellfire Familiar
 (@CGUID+206, 19016, 542, 3, 484.706, 8.66715, 9.63142, 6.16101, 7200, 7200, 0, 0, 0, 0), -- Hellfire Familiar
-(@CGUID+207, 21174, 542, 3, 320.911, -83.0625, -133.307, 3.00197, 7200, 7200, 0, 0, 0, 0); -- Magtheridon
+(@CGUID+207, 21174, 542, 3, 320.911, -83.0625, -133.307, 3.00197, 7200, 7200, 0, 0, 0, 0), -- Magtheridon
+(@CGUID+208, 17429, 542, 3, 494.5922, 111.4782, 38.67696, 3.071779, 7200, 7200, 0, 0, 0, 0); -- Fel Orc Neophyte
 
 -- ===========
 -- GAMEOBJECTS
 -- ===========
 
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecsmin`, `spawntimesecsmax`, `animprogress`, `state`) VALUES
-(@OGUID+1, 181713, 542, 3, 275.211, -87.2234, -137.451, -2.49582, 0, 0, 0, 0, 181, 181, 100, 1), -- Manticron Cube
-(@OGUID+2, 181713, 542, 3, 367.855, -56.3836, -137.359, 0.017453, 0, 0, 0, 0, 181, 181, 100, 1), -- Manticron Cube
-(@OGUID+3, 181713, 542, 3, 308.466, -140.398, -137.302, 2.44346, 0, 0, 0, 0, 181, 181, 100, 1), -- Manticron Cube
-(@OGUID+4, 181713, 542, 3, 308.112, -33.208, -137.451, -1.20428, 0, 0, 0, 0, 181, 181, 100, 1), -- Manticron Cube
-(@OGUID+5, 181713, 542, 3, 368.347, -118.024, -137.451, 1.22173, 0, 0, 0, 0, 181, 181, 100, 1), -- Manticron Cube
-(@OGUID+6, 181766, 542, 3, -2.96045, -115.525, -29.8004, 3.08943, 0, 0, 0, 0, 181, 181, 100, 1), -- Doodad_Hellfire_DW_PrisonEntry01
-(@OGUID+7, 181811, 542, 3, 327.221, 34.7391, 25.2633, 3.14159, 0, 0, 0, 0, 181, 181, 100, 0), -- Doodad_Hellfire_DW_PrisonEntry02
-(@OGUID+8, 181812, 542, 3, 327.221, 149.84, 23.8318, 3.14159, 0, 0, 0, 0, 181, 181, 100, 1), -- Doodad_Hellfire_DW_PrisonEntry03
-(@OGUID+9, 181813, 542, 3, 365.545, 69.3179, 11.1708, 3.14159, 0, 0, 0, 0, 181, 181, 100, 1), -- Prison Cell Door
-(@OGUID+10, 181814, 542, 3, 366.847, 100.435, 11.1708, 3.14159, 0, 0, 0, 0, 181, 181, 100, 1), -- Prison Cell Door
-(@OGUID+11, 181815, 542, 3, 287.979, 99.5641, 11.1708, -0.022321, 0, 0, 0, 0, 181, 181, 100, 1), -- Prison Cell Door
-(@OGUID+12, 181816, 542, 3, 288.815, 68.8318, 11.5749, -0.022321, 0, 0, 0, 0, 181, 181, 100, 1), -- Prison Cell Door
-(@OGUID+13, 181817, 542, 3, 495.532, 84.4274, 11.1708, 3.11927, 0, 0, 0, 0, 181, 181, 100, 1), -- Prison Cell Door
-(@OGUID+14, 181818, 542, 3, 416.665, 83.5567, 11.1708, 0, 0, 0, 0, 0, 181, 181, 100, 1), -- Prison Cell Door
-(@OGUID+15, 181819, 542, 3, 456.291, 34.1513, 23.8317, 0, 0, 0, 0, 0, 181, 181, 100, 1), -- Doodad_Hellfire_DW_PrisonEntry04
-(@OGUID+16, 181820, 542, 3, 494.697, 115.16, 11.5749, 3.11927, 0, 0, 0, 0, 181, 181, 100, 1), -- Prison Cell Door
-(@OGUID+17, 181821, 542, 3, 417.967, 114.674, 11.1708, 0, 0, 0, 0, 0, 181, 181, 100, 1), -- Prison Cell Door
-(@OGUID+18, 181822, 542, 3, 455.753, 149.726, 24.3749, 0, 0, 0, 0, 0, 181, 181, 100, 0), -- Doodad_Hellfire_DW_PrisonEntry05
-(@OGUID+19, 181823, 542, 3, 260.408, -125.812, -10.3249, 3.14159, 0, 0, 0, 0, 181, 181, 100, 1), -- Doodad_Hellfire_DW_SummonDoor01
-(@OGUID+20, 181921, 542, 3, 371.722, -47.6372, -25.8508, -2.53073, 0, 0, 0, 0, 181, 181, 53, 1), -- Doodad_Hellfire_DW_LargeFloor_Crack02onoff
-(@OGUID+21, 181922, 542, 3, 260.167, -46.2649, -25.8508, 2.70526, 0, 0, 0, 0, 181, 181, 53, 1), -- Doodad_Hellfire_DW_LargeFloor_Crack03
-(@OGUID+22, 181923, 542, 3, 386.239, -138.305, -25.7111, -0.872664, 0, 0, 0, 0, 181, 181, 53, 1), -- Doodad_Hellfire_DW_LargeFloor_Crack04onoff
-(@OGUID+23, 181924, 542, 3, 292.173, -143.163, -25.4868, -1.65806, 0, 0, 0, 0, 181, 181, 100, 1), -- Doodad_Hellfire_DW_SmallFloor_Crack03onoff
-(@OGUID+24, 181925, 542, 3, 266.452, -104.919, -25.3138, -2.53073, 0, 0, 0, 0, 181, 181, 100, 1), -- Doodad_Hellfire_DW_SmallFloor_Crack04onoff
-(@OGUID+25, 181926, 542, 3, 324.071, -23.2872, -25.5655, -2.53073, 0, 0, 0, 0, 181, 181, 100, 1), -- Doodad_Hellfire_DW_SmallFloor_Crack05onoff
-(@OGUID+26, 181927, 542, 3, 386.689, -101.665, -25.2719, 2.53073, 0, 0, 0, 0, 181, 181, 100, 1), -- Doodad_Hellfire_DW_SmallFloor_Crack06onoff
-(@OGUID+27, 181982, 542, 3, 456.555, 54.3522, 9.61573, 4.70899, 0, 0, 0, 0, 600, 600, 100, 1), -- Cell Door Lever
-(@OGUID+28, 184175, 542, 3, -0.626152, 25.2928, -45.1701, -1.9627, 0, 0, 0, 0, 0, 0, 0, 0), -- Doodad_InstancePortal_PurpleDifficulty01
-(@OGUID+29, 184176, 542, 3, -0.629567, 25.3203, -45.1592, -1.95961, 0, 0, 0, 0, 0, 0, 0, 0), -- Doodad_InstancePortal_PurpleDifficultyIcon01
-(@OGUID+30, 184932, 542, 3, 328.702, -197.719, -25.5089, 2.98451, 0, 0, 0, 0, 86400, 86400, 100, 1), -- Bound Fel Iron Chest
-(@OGUID+31, 184933, 542, 1, 494.211, 10.8752, 9.54401, 3.14159, 0, 0, 0, 0, 86400, 86400, 100, 1), -- Solid Fel Iron Chest
-(@OGUID+32, 184937, 542, 2, 498.092, 3.54075, 9.5534, 3.24531, 0, 0, 0, 0, 86400, 86400, 100, 1); -- Solid Adamantite Chest
+(@OGUID+1, 181713, 542, 3, 275.2106, -87.22339, -137.4514, 3.787367, 0, 0, -0.9483232, 0.3173059, 181, 181, 100, 1), -- Manticron Cube
+(@OGUID+2, 181713, 542, 3, 367.855, -56.38356, -137.3592, 0.01745246, 0, 0, 0.00872612, 0.9999619, 181, 181, 100, 1), -- Manticron Cube
+(@OGUID+3, 181713, 542, 3, 308.4658, -140.3977, -137.3016, 2.44346, 0, 0, 0.9396925, 0.3420205, 181, 181, 100, 1), -- Manticron Cube
+(@OGUID+4, 181713, 542, 3, 308.1118, -33.20802, -137.4514, 5.078908, 0, 0, -0.5664063, 0.8241262, 181, 181, 100, 1), -- Manticron Cube
+(@OGUID+5, 181713, 542, 3, 368.3469, -118.0242, -137.4514, 1.221729, 0, 0, 0.573576, 0.8191524, 181, 181, 100, 1), -- Manticron Cube
+(@OGUID+6, 181766, 542, 3, -2.960451, -115.5247, -29.80039, 3.08938, -0.001137733, -0.04360485, 0.9987078, 0.02607852, 181, 181, 100, 1), -- Doodad_Hellfire_DW_PrisonEntry01
+(@OGUID+7, 181811, 542, 3, 327.2208, 34.73906, 25.26334, 3.141593, 0, 0, -1, 0, 181, 181, 100, 0), -- Doodad_Hellfire_DW_PrisonEntry02
+(@OGUID+8, 181812, 542, 3, 327.2208, 149.8403, 23.83175, 3.141593, 0, 0, -1, 0, 181, 181, 100, 1), -- Doodad_Hellfire_DW_PrisonEntry03
+(@OGUID+9, 181813, 542, 3, 365.5449, 69.31794, 11.17083, 3.141593, 0, 0, -1, 0, 181, 181, 100, 1), -- Prison Cell Door
+(@OGUID+10, 181814, 542, 3, 366.8468, 100.4349, 11.17083, 3.141593, 0, 0, -1, 0, 181, 181, 100, 1), -- Prison Cell Door
+(@OGUID+11, 181815, 542, 3, 287.9795, 99.56409, 11.17083, 6.260866, 0.003782749, -0.0006666183, -0.01115704, 0.9999304, 181, 181, 100, 1), -- Prison Cell Door
+(@OGUID+12, 181816, 542, 3, 288.8148, 68.83176, 11.57488, 6.260866, 0.003782749, -0.0006666183, -0.01115704, 0.9999304, 181, 181, 100, 1), -- Prison Cell Door
+(@OGUID+13, 181817, 542, 3, 495.5322, 84.42744, 11.17082, 3.11927, 0.0006666183, 0.003782272, 0.9999304, 0.01115859, 181, 181, 100, 1), -- Prison Cell Door
+(@OGUID+14, 181818, 542, 3, 416.6649, 83.55666, 11.17082, 0, 0, 0, 0, 1, 181, 181, 100, 1), -- Prison Cell Door
+(@OGUID+15, 181819, 542, 3, 456.2909, 34.15126, 23.83174, 0, 0, 0, 0, 1, 181, 181, 100, 1), -- Doodad_Hellfire_DW_PrisonEntry04
+(@OGUID+16, 181820, 542, 3, 494.6969, 115.1598, 11.57487, 3.11927, 0.0006666183, 0.003782272, 0.9999304, 0.01115859, 181, 181, 100, 1), -- Prison Cell Door
+(@OGUID+17, 181821, 542, 3, 417.9668, 114.6736, 11.17082, 0, 0, 0, 0, 1, 181, 181, 100, 1), -- Prison Cell Door
+(@OGUID+18, 181822, 542, 3, 455.7529, 149.7262, 24.37494, 0, 0, 0, 0, 1, 181, 181, 100, 0), -- Doodad_Hellfire_DW_PrisonEntry05
+(@OGUID+19, 181823, 542, 3, 260.408, -125.8124, -10.3249, 3.141593, 0, 0, -1, 0, 181, 181, 100, 1), -- Doodad_Hellfire_DW_SummonDoor01
+(@OGUID+20, 181921, 542, 3, 371.7221, -47.63724, -25.85084, 3.752462, 0, 0, -0.9537163, 0.3007079, 181, 181, 53, 1), -- Doodad_Hellfire_DW_LargeFloor_Crack02onoff
+(@OGUID+21, 181922, 542, 3, 260.1674, -46.26492, -25.85084, 2.705255, 0, 0, 0.9762955, 0.2164421, 181, 181, 53, 1), -- Doodad_Hellfire_DW_LargeFloor_Crack03
+(@OGUID+22, 181923, 542, 3, 386.2387, -138.3052, -25.71114, 5.410522, 0, 0, -0.4226179, 0.9063079, 181, 181, 53, 1), -- Doodad_Hellfire_DW_LargeFloor_Crack04onoff
+(@OGUID+23, 181924, 542, 3, 292.173, -143.1631, -25.48676, 4.625124, 0, 0, -0.737277, 0.6755905, 181, 181, 100, 1), -- Doodad_Hellfire_DW_SmallFloor_Crack03onoff
+(@OGUID+24, 181925, 542, 3, 266.4524, -104.9193, -25.31384, 3.752462, 0, 0, -0.9537163, 0.3007079, 181, 181, 100, 1), -- Doodad_Hellfire_DW_SmallFloor_Crack04onoff
+(@OGUID+25, 181926, 542, 3, 324.0711, -23.28722, -25.56554, 3.752462, 0, 0, -0.9537163, 0.3007079, 181, 181, 100, 1), -- Doodad_Hellfire_DW_SmallFloor_Crack05onoff
+(@OGUID+26, 181927, 542, 3, 386.6885, -101.6648, -25.27194, 2.530723, 0, 0, 0.9537163, 0.3007079, 181, 181, 100, 1), -- Doodad_Hellfire_DW_SmallFloor_Crack06onoff
+(@OGUID+27, 181982, 542, 3, 456.0855, 60.34892, 9.47833, 3.141593, 0, 0, -1, 0, 600, 600, 100, 1), -- Cell Door Lever
+(@OGUID+28, 184175, 542, 1, -0.556658, 25.56831, -44.79747, 4.324618, 0, 0, -0.8300982, 0.5576173, 0, 0, 0, 0), -- Doodad_InstancePortal_PurpleDifficulty01
+(@OGUID+29, 184176, 542, 2, -0.556658, 25.56831, -44.79747, 4.324618, 0, 0, -0.8300982, 0.5576173, 0, 0, 0, 0), -- Doodad_InstancePortal_PurpleDifficultyIcon01
+(@OGUID+30, 184932, 542, 1, 494.2115, 10.87523, 9.544005, 3.141593, 0, 0, 0, 0, 86400, 86400, 100, 1), -- Bound Fel Iron Chest
+(@OGUID+31, 184933, 542, 1, 494.2115, 10.87523, 9.544005, 3.141593, 0, 0, 0, 0, 86400, 86400, 100, 1), -- Solid Fel Iron Chest
+(@OGUID+32, 184932, 542, 1, 328.7021, -197.7191, -25.50888, 2.984499, 0, 0, 0, 0, 86400, 86400, 100, 1), -- Bound Fel Iron Chest
+(@OGUID+33, 184933, 542, 1, 328.7021, -197.7191, -25.50888, 2.984499, 0, 0, 0, 0, 86400, 86400, 100, 1), -- Solid Fel Iron Chest
+(@OGUID+34, 184937, 542, 2, 498.092, 3.54075, 9.5534, 3.24531, 0, 0, 0, 0, 86400, 86400, 100, 1); -- Solid Adamantite Chest
 
 -- ======
 -- EVENTS
@@ -594,11 +550,16 @@ INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `posit
 -- POOLING
 -- =======
 
--- INSERT INTO `pool_pool` (`pool_id`, `mother_pool`, `chance`, `description`) VALUES
+INSERT INTO `pool_pool` (`pool_id`, `mother_pool`, `chance`, `description`) VALUES
+(@PGUID+31, @PGUID+30, 0, 'Bound/Solid Fel Iron Chest - Pool 1'),
+(@PGUID+32, @PGUID+30, 0, 'Bound/Solid Fel Iron Chest - Pool 2');
 
 INSERT INTO `pool_template` (`entry`, `max_limit`, `description`) VALUES
 (@PGUID+1, 4, 'Blood Furnace - Laughing Skull Rogues'),
-(@PGUID+21, 2, 'Blood Furnace - Master Chest Pool');
+(@PGUID+30, 1, 'Blood Furnace (Normal) - Master Chest Pool'),
+(@PGUID+31, 1, 'Blood Furnace (Normal) - Bound/Solid Fel Iron Chest - Pool 1'),
+(@PGUID+32, 1, 'Blood Furnace (Normal) - Bound/Solid Fel Iron Chest - Pool 2');
+-- (@PGUID+40, 1, 'Blood Furnace (Heroic) - Master Chest Pool');
 
 INSERT INTO `pool_creature` (`guid`, `pool_entry`, `chance`, `description`) VALUES
 (@CGUID+171, @PGUID+1, 0, 'Blood Furnace - Laughing Skull Rogues - Pathing on Front Stairs'),
@@ -612,9 +573,11 @@ INSERT INTO `pool_creature` (`guid`, `pool_entry`, `chance`, `description`) VALU
 -- INSERT INTO `pool_creature_template` (`id`, `pool_entry`, `chance`, `description`) VALUES
 
 INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES
-(@OGUID+30, @PGUID+21, 0, 'Blood Furnace - Bound Fel Iron Chest (184932)'),
-(@OGUID+31, @PGUID+21, 0, 'Blood Furnace - Solid Fel Iron Chest (184933)'),
-(@OGUID+32, @PGUID+21, 0, 'Blood Furnace - Solid Adamantite Chest (184937)');
+(@OGUID+30, @PGUID+31, 0, 'Blood Furnace - Bound Fel Iron Chest (184932)'),
+(@OGUID+31, @PGUID+31, 0, 'Blood Furnace - Solid Fel Iron Chest (184933)'),
+(@OGUID+32, @PGUID+32, 0, 'Blood Furnace - Bound Fel Iron Chest (184932)'),
+(@OGUID+33, @PGUID+32, 0, 'Blood Furnace - Solid Fel Iron Chest (184933)'),
+(@OGUID+34, @PGUID+30, 0, 'Blood Furnace - Solid Adamantite Chest (184937)'); -- @PGUID+40
 
 -- INSERT INTO `pool_gameobject_template` (`id`, `pool_entry`, `chance`, `description`) VALUES
 

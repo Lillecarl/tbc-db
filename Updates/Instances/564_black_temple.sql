@@ -5,11 +5,11 @@ DB%Complete: 85
 DBComment:
 * @CGUID+51,@CGUID+61,@CGUID+75 need to be respawned, formation is far off
 * Path +440, +441
-* Remove Delete Querys when File is done, most, if not all Deleting is done by 000_setup.sql
 * Dragonmaw Wind Reaver, Sky Stalker RP Event
 * Test Promenade Sentinel Aggro Range
 * SD2 (Zone?, Sniff normal emote) Emotes for Entry: 22984 "You hear a loud rumble of metal grinding on stone..." - High Warlord Naj'entus Death, "The door to The Den of Mortal Delights has opened." - 6/9 Bosses Dead
 * Add Serverside 34081,39664
+* Missing March script for Shadowmoon Weapon Master & Shadowmoon Soldiers
 EndDBScriptData */
 
 SET @CGUID := 5640000; -- creatures
@@ -1063,7 +1063,7 @@ INSERT INTO `creature_movement` (`id`,`point`,`position_x`,`position_y`,`positio
 (@CGUID+447,9,625.9684,963.7745,56.14234,0,0,0),
 (@CGUID+447,10,633.1401,963.168,55.85291,0,0,0),
 -- Pathing for Dragonmaw Sky Stalker Entry: 23030
-(@CGUID+449,1,617.2476,859.702,98.09756,0,0,0),
+(@CGUID+449,1,617.2476,859.702,98.09756,0,5,0), -- run on
 (@CGUID+449,2,615.2957,859.4429,97.69086,0,0,0),
 (@CGUID+449,3,586.1652,871.6057,97.05197,0,0,0),
 (@CGUID+449,4,583.9716,902.4149,90.85754,0,0,0),
@@ -1076,7 +1076,7 @@ INSERT INTO `creature_movement` (`id`,`point`,`position_x`,`position_y`,`positio
 (@CGUID+449,11,660.8712,871.7776,95.46863,0,0,0),
 (@CGUID+449,12,640.8623,860.3631,99.13529,0,0,0),
 -- Pathing for Dragonmaw Sky Stalker Entry: 23030
-(@CGUID+452,1,611.2323,772.1125,100.3375,0,0,0),
+(@CGUID+452,1,611.2323,772.1125,100.3375,0,5,0), -- run on
 (@CGUID+452,2,610.3099,773.2811,101.0543,0,0,0),
 (@CGUID+452,3,593.9789,761.1765,100.2642,0,0,0),
 (@CGUID+452,4,596.4754,741.2283,102.9648,0,0,0),
@@ -1089,7 +1089,7 @@ INSERT INTO `creature_movement` (`id`,`point`,`position_x`,`position_y`,`positio
 (@CGUID+452,11,642.2083,757.2476,103.1986,0,0,0),
 (@CGUID+452,12,624.1133,771.72,100.3653,0,0,0),
 -- Pathing for Dragonmaw Sky Stalker Entry: 23030
-(@CGUID+453,1,639.2408,817.2838,96.00954,0,0,0),
+(@CGUID+453,1,639.2408,817.2838,96.00954,0,5,0), -- run on
 (@CGUID+453,2,637.0174,831.9658,94.81514,0,0,0),
 (@CGUID+453,3,630.5756,845.7454,91.42623,0,0,0),
 (@CGUID+453,4,617.9464,853.2907,88.20402,0,0,0),
@@ -1108,7 +1108,7 @@ INSERT INTO `creature_movement` (`id`,`point`,`position_x`,`position_y`,`positio
 (@CGUID+453,17,630.8676,783.9254,95.29805,0,0,0),
 (@CGUID+453,18,635.1721,806.4858,96.52027,0,0,0),
 -- Pathing for Dragonmaw Sky Stalker Entry: 23030
-(@CGUID+457,1,716.7581,667.9764,171.9325,0,0,0),
+(@CGUID+457,1,716.7581,667.9764,171.9325,0,5,0), -- run on
 (@CGUID+457,2,721.9486,665.284,171.9325,0,0,0),
 (@CGUID+457,3,764.4177,663.7574,171.9325,0,0,0),
 (@CGUID+457,4,791.3472,677.6638,171.9325,0,0,0),
@@ -1132,7 +1132,7 @@ INSERT INTO `creature_movement` (`id`,`point`,`position_x`,`position_y`,`positio
 (@CGUID+457,22,661.7581,705.3063,171.9325,0,0,0),
 (@CGUID+457,23,684.738,681.9153,171.9325,0,0,0),
 -- Pathing for Dragonmaw Sky Stalker Entry: 23030
-(@CGUID+458,1,772.7885,654.1609,181.0927,0,0,0),
+(@CGUID+458,1,772.7885,654.1609,181.0927,0,5,0), -- run on
 (@CGUID+458,2,741.7479,664.2408,181.0927,0,0,0),
 (@CGUID+458,3,706.3735,660.1111,181.0927,0,0,0),
 (@CGUID+458,4,687.1923,657.1448,181.0927,0,0,0),
@@ -1153,7 +1153,7 @@ INSERT INTO `creature_movement` (`id`,`point`,`position_x`,`position_y`,`positio
 (@CGUID+458,19,795.8221,652.5587,181.0927,0,0,0),
 (@CGUID+458,20,778.0756,652.9412,181.0927,0,0,0),
 -- Pathing for Dragonmaw Sky Stalker Entry: 23030
-(@CGUID+462,1,748.5817,926.8765,169.7075,0,0,0),
+(@CGUID+462,1,748.5817,926.8765,169.7075,0,5,0), -- run on
 (@CGUID+462,2,754.8384,949.9673,169.7075,0,0,0),
 (@CGUID+462,3,743.052,964.9089,169.7075,0,0,0),
 (@CGUID+462,4,709.5197,973.5267,169.7075,0,0,0),
@@ -1176,7 +1176,7 @@ INSERT INTO `creature_movement` (`id`,`point`,`position_x`,`position_y`,`positio
 (@CGUID+462,21,751.462,892.9752,169.7075,0,0,0),
 (@CGUID+462,22,748.5466,920.3238,169.7075,0,0,0),
 -- Pathing for Dragonmaw Sky Stalker Entry: 23030
-(@CGUID+463,1,803.3759,932.4915,184.5064,0,0,0),
+(@CGUID+463,1,803.3759,932.4915,184.5064,0,5,0), -- run on
 (@CGUID+463,2,811.2745,897.108,184.5064,0,0,0),
 (@CGUID+463,3,791.5839,875.892,184.5064,0,0,0),
 (@CGUID+463,4,752.4867,868.6232,184.5064,0,0,0),
@@ -1250,6 +1250,56 @@ INSERT INTO `creature_movement` (`id`,`point`,`position_x`,`position_y`,`positio
 (@CGUID+542,16,921.5169,224.1364,85.64123,0,0,0),
 (@CGUID+542,17,897.392,207.5867,86.16047,0,0,0),
 (@CGUID+542,18,899.0332,197.8294,86.16059,0,0,0),
+-- Pathing for Dragonmaw Sky Stalker Entry: 23030
+(@CGUID+792, 1, 791.9598, 864.118, 93.93944, 0, 5, 100), -- run on
+(@CGUID+792, 2, 817.6236, 873.2053, 88.28783, 0, 0, 100),
+(@CGUID+792, 3, 828.5604, 901.0464, 87.28785, 0, 0, 100),
+(@CGUID+792, 4, 828.9747, 926.9236, 87.42671, 0, 0, 100),
+(@CGUID+792, 5, 814.5479, 959.9678, 88.26006, 0, 0, 100),
+(@CGUID+792, 6, 796.491, 966.5102, 86.59338, 0, 0, 100),
+(@CGUID+792, 7, 757.6725, 966.7218, 90.51004, 0, 0, 100),
+(@CGUID+792, 8, 739.4886, 948.179, 98.78782, 0, 0, 100),
+(@CGUID+792, 9, 736.3679, 918.2423, 107.4823, 0, 0, 100),
+(@CGUID+792, 10, 739.2999, 894.662, 107.0934, 0, 0, 100),
+(@CGUID+792, 11, 753.6536, 874.6035, 98.28783, 0, 0, 100),
+(@CGUID+792, 12, 790.0931, 864.1937, 94.56561, 0, 0, 100),
+-- Pathing for Dragonmaw Sky Stalker Entry: 23030
+(@CGUID+793, 1, 808.744, 752.8126, 93.69208, 0, 5, 100), -- run on
+(@CGUID+793, 2, 810.0982, 728.1007, 95.92642, 0, 0, 100),
+(@CGUID+793, 3, 809.3226, 709.2455, 101.5179, 0, 0, 100),
+(@CGUID+793, 4, 804.869, 691.9334, 103.6763, 0, 0, 100),
+(@CGUID+793, 5, 789.4135, 679.9703, 102.1762, 0, 0, 100),
+(@CGUID+793, 6, 772.5522, 683.7802, 99.09293, 0, 0, 100),
+(@CGUID+793, 7, 759.5066, 697.9881, 100.3707, 0, 0, 100),
+(@CGUID+793, 8, 752.4968, 727.6615, 106.1207, 0, 0, 100),
+(@CGUID+793, 9, 747.4766, 760.6776, 114.7874, 0, 0, 100),
+(@CGUID+793, 10, 751.5941, 805.2043, 104.7318, 0, 0, 100),
+(@CGUID+793, 11, 751.1071, 831.5707, 90.48182, 0, 0, 100),
+(@CGUID+793, 12, 768.2726, 846.9728, 96.42626, 0, 0, 100),
+(@CGUID+793, 13, 795.4689, 850.97, 102.3151, 0, 0, 100),
+(@CGUID+793, 14, 815.1022, 836.6889, 95.98182, 0, 0, 100),
+(@CGUID+793, 15, 812.1649, 811.0369, 99.09293, 0, 0, 100),
+(@CGUID+793, 16, 810.7905, 781.4119, 100.1485, 0, 0, 100),
+(@CGUID+793, 17, 808.2366, 755.0889, 94.70402, 0, 0, 100),
+-- Pathing for Dragonmaw Sky Stalker Entry: 23030
+(@CGUID+794, 1, 687.0418, 872.5399, 81.68005, 0, 5, 100), -- run on
+(@CGUID+794, 2, 672.4034, 852.6266, 80.60835, 0, 0, 100),
+(@CGUID+794, 3, 664.3254, 823.0761, 90.13865, 0, 0, 100),
+(@CGUID+794, 4, 675.2798, 803.8729, 91.80936, 0, 0, 100),
+(@CGUID+794, 5, 683.4824, 782.0359, 90.15625, 0, 0, 100),
+(@CGUID+794, 6, 680.5452, 754.212, 91.47352, 0, 0, 100),
+(@CGUID+794, 7, 687.6937, 739.1242, 94.63132, 0, 0, 100),
+(@CGUID+794, 8, 709.887, 737.9406, 97.90912, 0, 0, 100),
+(@CGUID+794, 9, 722.275, 749.9312, 99.65911, 0, 0, 100),
+(@CGUID+794, 10, 720.2606, 768.6862, 92.71466, 0, 0, 100),
+(@CGUID+794, 11, 720.647, 783.9854, 88.32578, 0, 0, 100),
+(@CGUID+794, 12, 720.858, 796.5645, 87.04801, 0, 0, 100),
+(@CGUID+794, 13, 731.3468, 814.0711, 81.68689, 0, 0, 100),
+(@CGUID+794, 14, 731.7731, 831.5212, 90.96468, 0, 0, 100),
+(@CGUID+794, 15, 734.43, 855.3979, 87.65915, 0, 0, 100),
+(@CGUID+794, 16, 717.5137, 875.2517, 88.3258, 0, 0, 100),
+(@CGUID+794, 17, 708.2299, 879.131, 86.40916, 0, 0, 100),
+(@CGUID+794, 18, 706.2591, 879.9013, 85.68813, 0, 0, 100),
 -- Pathing for Bonechewer Behemoth Entry: 23196 - Needs pathID for creature_movement due to MovementType Change for @CGUID+543
 (@CGUID+543, 1, 822.3735, 124.8126, 112.52, 12000, 0, 100), -- 2319601 idle
 (@CGUID+543, 2, 825.2758, 62.25126, 112.7349, 60000, 0, 100), -- 2319602 spawndist 3
@@ -1544,11 +1594,52 @@ INSERT INTO `creature_movement` (`id`,`point`,`position_x`,`position_y`,`positio
 (@CGUID+780,7,780.093,377.8317,112.7566,0,0,0),
 (@CGUID+780,8,777.8922,390.1339,112.7584,0,0,0),
 (@CGUID+780,9,768.4619,394.7663,112.757,0,0,0),
-(@CGUID+780,10,756.2557,390.515,112.7589,0,0,0);
+(@CGUID+780,10,756.2557,390.515,112.7589,0,0,0),
+-- Hungering Soul Fragment Entry: 23401
+(@CGUID+701,1,547.9556,92.59508,112.612,0,0,100),
+(@CGUID+701,2,541.5929,84.78826,112.3907,0,0,100),
+(@CGUID+701,3,537.2125,79.41367,113.1448,0,0,100),
+(@CGUID+701,4,536.0945,78.04199,113.0362,0,0,100),
+(@CGUID+701,5,534.9767,76.67038,112.9312,0,0,100),
+(@CGUID+701,6,536.0945,78.04199,113.0362,0,0,100),
+(@CGUID+701,7,537.2125,79.41367,113.1448,0,0,100),
+(@CGUID+701,8,541.5929,84.78826,112.3907,0,0,100),
+(@CGUID+701,9,547.9556,92.59508,112.612,0,0,100),
+(@CGUID+701,10,550.2753,95.44136,112.5936,0,0,100),
+(@CGUID+701,11,552.3234,97.95421,112.4849,0,0,100),
+(@CGUID+701,12,554.4448,98.50984,112.4766,0,0,100),
+(@CGUID+701,13,565.4874,101.4022,112.9024,0,0,100),
+(@CGUID+701,14,568.8529,102.2837,113.471,0,0,100),
+(@CGUID+701,15,573.4583,103.4899,113.1861,0,0,100),
+(@CGUID+701,16,568.8529,102.2837,113.471,0,0,100),
+(@CGUID+701,17,565.4874,101.4022,112.9024,0,0,100),
+(@CGUID+701,18,554.4448,98.50984,112.4766,0,0,100),
+(@CGUID+701,19,552.3234,97.95421,112.4849,0,0,100),
+(@CGUID+701,20,550.2753,95.44136,112.5936,0,0,100),
+-- Hungering Soul Fragment Entry: 23401
+(@CGUID+695,1,589.7239,39.63419,112.7313,0,0,100),
+(@CGUID+695,2,587.6489,36.75304,112.822,0,0,100),
+(@CGUID+695,3,607.5776,64.42328,111.7202,0,0,100),
+(@CGUID+695,4,625.7739,17.56272,112.7262,0,0,100),
+(@CGUID+695,5,607.7153,64.61448,111.7263,0,0,100),
+-- Hungering Soul Fragment Entry: 23401
+(@CGUID+699,1,473.2182,73.22733,111.8251,0,0,100),
+(@CGUID+699,2,520.1631,74.64678,112.8883,0,0,100),
+(@CGUID+699,3,483.0837,73.52563,112.141,0,0,100),
+-- Hungering Soul Fragment Entry: 23401
+(@CGUID+693,1,574.5044,102.8732,113.1449,0,0,100),
+(@CGUID+693,2,601.5496,73.97516,111.2432,0,0,100),
+(@CGUID+693,3,617.4402,102.7646,112.7507,0,0,100),
+(@CGUID+693,4,601.6309,74.0624,111.239,0,0,100),
+(@CGUID+693,5,581.9877,94.90571,112.8476,0,0,100),
+-- Hungering Soul Fragment Entry: 23401
+(@CGUID+697,1,486.4131,44.31189,112.2189,0,0,100),
+(@CGUID+697,2,512.1553,30.04926,113.553,0,0,100),
+(@CGUID+697,3,553.189,49.69274,112.4768,0,0,100),
+(@CGUID+697,4,512.1553,30.04926,113.553,0,0,100);
 
 -- INSERT INTO `creature_movement_template` (`entry`, `pathId`, `point`, `position_x`, `position_y`, `position_z`, `orientation`, `waittime`, `script_id`) VALUES
 
-DELETE FROM `creature_addon` WHERE `guid` BETWEEN @CGUID+1 AND @CGUID+780;
 INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_flags`, `emote`, `moveflags`, `auras`) VALUES
 (@CGUID+45, 0, 0, 1, 16, 64, 0, '40973'), -- Shade of Akama
 (@CGUID+46, 0, 8, 1, 16, 0, 0, NULL), -- Ashtongue Battlelord
@@ -1755,6 +1846,32 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_fl
 (@CGUID+418, 0, 0, 1, 0, 234, 0, NULL), -- Bonechewer Worker
 (@CGUID+419, 0, 0, 1, 0, 234, 0, NULL), -- Bonechewer Worker
 (@CGUID+420, 0, 0, 1, 0, 173, 0, NULL), -- Bonechewer Worker
+(@CGUID+466, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+467, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+468, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+469, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+470, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+471, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+472, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+473, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+474, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+475, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+476, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+477, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+478, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+479, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+480, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+481, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+482, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+483, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+484, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+485, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+486, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+487, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+488, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+489, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+490, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
+(@CGUID+491, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
 (@CGUID+500, 0, 0, 1, 16, 0, 0, NULL), -- Shadowmoon Weapon Master
 (@CGUID+501, 0, 0, 1, 16, 0, 0, NULL), -- Black Temple Invis Stalker
 (@CGUID+516, 0, 0, 1, 16, 173, 0, NULL), -- Shadowmoon Grunt
@@ -1824,8 +1941,8 @@ REPLACE INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_sheath
 (22886, 0, 1, 1, 16, 0, 8192, NULL), -- Black Temple Captive
 (22887, 0, 0, 1, 0, 0, 0, '19818'), -- High Warlord Naj'entus
 -- 22894 not found in sniff
--- 22896 has 32186 Fire Totem Transform as Aura serverside
--- 22897 has 32188 Air Totem Transform as Aura serverside
+(22896, 0, 0, 0, 0, 0, 0, '32186'), -- Ashtongue Searing Totem
+(22897, 0, 0, 0, 0, 0, 0, '32188'), -- Summoned Windfury Totem
 (22898, 0, 0, 1, 0, 0, 0, NULL), -- Supremus
 (22917, 0, 0, 0, 0, 0, 0, '39656'), -- Illidan Stormrage
 (22949, 0, 0, 0, 0, 0, 0, '41341'), -- Gathios the Shatterer
@@ -1833,21 +1950,21 @@ REPLACE INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_sheath
 (22950, 0, 0, 0, 0, 0, 0, '41341'), -- High Nethermancer Zerevor
 (22951, 0, 0, 0, 0, 0, 0, '41341'), -- Lady Malande
 (22952, 0, 0, 0, 0, 0, 0, '41341'), -- Veras Darkshadow
-(22960, 0, 0, 0, 0, 0, 0, '40899'),-- Dragonmaw Wyrmcaller
+(22960, 0, 0, 1, 0, 0, 0, '40899'),-- Dragonmaw Wyrmcaller
 (23018, 14334, 0, 1, 0, 0, 0, NULL), -- Shadowmoon Houndmaster
 (23030, 24725, 0, 1, 16, 0, 1024, NULL), -- Dragonmaw Sky Stalker
-(23033, 0, 0, 1, 0, 0, 0, '40155'), -- Invisible Stalker (Floating)
 (23047, 0, 0, 1, 16, 0, 0, NULL), -- Shadowmoon Soldier
 (23049, 0, 0, 1, 0, 0, 0, NULL), -- Shadowmoon Weapon Master -- ss.39664
 (23083, 0, 0, 1, 16, 0, 0, '18950'), -- Shadowmoon Riding Hound
 (23084, 0, 0, 1, 0, 0, 0, NULL), -- Black Temple Invis Stalker
 (23086, 0, 0, 1, 16, 0, 0, NULL), -- Sewer Rat
 (23087, 0, 0, 1, 16, 0, 0, NULL), -- Sewer Crocolisk
+(23111, 0, 0, 1, 16, 0, 0, '40326 40334'), -- Shadowy Construct
 (23157, 0, 0, 1, 0, 0, 0, NULL), -- Aluyen
 (23158, 0, 0, 1, 0, 0, 0, NULL), -- Seer Kanai
 (23159, 0, 0, 1, 0, 0, 0, NULL), -- Okuno
 (23172, 0, 0, 1, 16, 0, 0, '18943'), -- Hand of Gorefiend
-(23191, 0, 0, 1, 16, 0, 0, '30831'), -- Akama
+(23191, 0, 0, 1, 16, 0, 0, '34189'), -- Akama
 (23196, 0, 0, 1, 16, 0, 0, '18943'), -- Bonechewer Behemoth
 (23232, 0, 0, 1, 16, 0, 0, '41290'), -- Mutant War Hound
 (23330, 21548, 0, 1, 16, 0, 1024, NULL), -- Dragonmaw Wind Reaver
@@ -1868,7 +1985,6 @@ REPLACE INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_sheath
 (23421, 0, 0, 1, 16, 0, 0, NULL), -- Ashtongue Channeler
 (23498, 0, 0, 1, 16, 0, 0, '34429 41913'); -- Parasitic Shadowfiend
 
-DELETE FROM `creature_linking` WHERE `guid` BETWEEN @CGUID+1 AND @CGUID+770;
 INSERT INTO `creature_linking` (`guid`, `master_guid`, `flag`) VALUES
 -- High Warlord Naj'entus
 (@CGUID+113, @CGUID+127, 1679), -- Coilskar Sea-Caller -> Aqueous Lord
@@ -1934,48 +2050,256 @@ INSERT INTO `creature_linking` (`guid`, `master_guid`, `flag`) VALUES
 (@CGUID+159, @CGUID+160, 1167), -- Aqueous Spawn -> Aqueous Spawn
 (@CGUID+160, @CGUID+197, 1024), -- Aqueous Spawn -> High Warlord Naj'entus
 -- Supremus
+(@CGUID+291, @CGUID+198, 1024), -- Illidari Fearbringer -> Supremus
+(@CGUID+292, @CGUID+198, 1024), -- Illidari Fearbringer -> Supremus
+(@CGUID+293, @CGUID+198, 1024), -- Illidari Fearbringer -> Supremus
+(@CGUID+294, @CGUID+198, 1024), -- Illidari Fearbringer -> Supremus
+(@CGUID+398, @CGUID+442, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+399, @CGUID+442, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+400, @CGUID+442, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+401, @CGUID+442, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+402, @CGUID+442, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+403, @CGUID+442, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+442, @CGUID+198, 1024), -- Bonechewer Taskmaster -> Supremus
+(@CGUID+404, @CGUID+446, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+405, @CGUID+446, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+407, @CGUID+446, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+406, @CGUID+446, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+408, @CGUID+446, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+409, @CGUID+446, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+446, @CGUID+198, 1024), -- Bonechewer Taskmaster -> Supremus
+(@CGUID+416, @CGUID+443, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+417, @CGUID+443, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+418, @CGUID+443, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+419, @CGUID+443, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+420, @CGUID+443, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+443, @CGUID+198, 1024), -- Bonechewer Taskmaster -> Supremus
+
+(@CGUID+460, @CGUID+381, 1167), -- Dragonmaw Sky Stalker -> Dragonmaw Wyrmcaller
+(@CGUID+783, @CGUID+381, 1167), -- Dragonmaw Sky Stalker -> Dragonmaw Wyrmcaller
 (@CGUID+382, @CGUID+381, 1679), -- Dragonmaw Wyrmcaller -> Dragonmaw Wyrmcaller
 (@CGUID+381, @CGUID+198, 1024), -- Dragonmaw Wyrmcaller -> Supremus
-(@CGUID+384, @CGUID+383, 1679), -- Dragonmaw Wyrmcaller -> Dragonmaw Wyrmcaller
-(@CGUID+383, @CGUID+198, 1024), -- Dragonmaw Wyrmcaller -> Supremus
-(@CGUID+386, @CGUID+385, 1679), -- Dragonmaw Wyrmcaller -> Dragonmaw Wyrmcaller
-(@CGUID+385, @CGUID+198, 1024), -- Dragonmaw Wyrmcaller -> Supremus
+
+(@CGUID+782, @CGUID+388, 1167), -- Dragonmaw Sky Stalker -> Dragonmaw Wyrmcaller
+(@CGUID+781, @CGUID+388, 1167), -- Dragonmaw Sky Stalker -> Dragonmaw Wyrmcaller
 (@CGUID+387, @CGUID+388, 1679), -- Dragonmaw Wyrmcaller -> Dragonmaw Wyrmcaller
 (@CGUID+388, @CGUID+198, 1024), -- Dragonmaw Wyrmcaller -> Supremus
--- (@CGUID+389, @CGUID+390, 1679), -- Dragonmaw Wyrmcaller -> Dragonmaw Wyrmcaller not sure
-(@CGUID+390, @CGUID+198, 1024), -- Dragonmaw Wyrmcaller -> Supremus
+
+(@CGUID+797, @CGUID+794, 1679), -- Dragonmaw Wind Reaver -> Dragonmaw Sky Stalker
+(@CGUID+384, @CGUID+383, 1679), -- Dragonmaw Wyrmcaller -> Dragonmaw Wyrmcaller
+(@CGUID+383, @CGUID+794, 1167), -- Dragonmaw Wyrmcaller -> Dragonmaw Sky Stalker
+(@CGUID+794, @CGUID+198, 1024), -- Dragonmaw Sky Stalker -> Supremus
+
+(@CGUID+612, @CGUID+449, 1679), -- Dragonmaw Wind Reaver -> Dragonmaw Sky Stalker
+(@CGUID+379, @CGUID+449, 1167), -- Dragonmaw Wyrmcaller -> Dragonmaw Sky Stalker
+(@CGUID+449, @CGUID+198, 1024), -- Dragonmaw Sky Stalker -> Supremus
+
+(@CGUID+607, @CGUID+453, 1679), -- Dragonmaw Wind Reaver -> Dragonmaw Sky Stalker
+(@CGUID+390, @CGUID+453, 1167), -- Dragonmaw Wyrmcaller -> Dragonmaw Sky Stalker
+(@CGUID+453, @CGUID+198, 1024), -- Dragonmaw Sky Stalker -> Supremus
+
+(@CGUID+611, @CGUID+452, 1679), -- Dragonmaw Wind Reaver -> Dragonmaw Sky Stalker
+(@CGUID+389, @CGUID+452, 1167), -- Dragonmaw Wyrmcaller -> Dragonmaw Sky Stalker
+(@CGUID+452, @CGUID+198, 1024), -- Dragonmaw Sky Stalker -> Supremus
+
+(@CGUID+795, @CGUID+792, 1679), -- Dragonmaw Wind Reaver -> Dragonmaw Sky Stalker
+(@CGUID+380, @CGUID+792, 1167), -- Dragonmaw Wyrmcaller -> Dragonmaw Sky Stalker
+(@CGUID+792, @CGUID+198, 1024), -- Dragonmaw Sky Stalker -> Supremus
+
+(@CGUID+796, @CGUID+793, 1679), -- Dragonmaw Wind Reaver -> Dragonmaw Sky Stalker
+(@CGUID+386, @CGUID+385, 1679), -- Dragonmaw Wyrmcaller -> Dragonmaw Wyrmcaller
+(@CGUID+385, @CGUID+793, 1167), -- Dragonmaw Wyrmcaller -> Dragonmaw Sky Stalker
+(@CGUID+793, @CGUID+198, 1024), -- Dragonmaw Sky Stalker -> Supremus
+
+-- high flyers (should never aggro, unselectable)
+
+(@CGUID+784, @CGUID+457, 1679), -- Dragonmaw Sky Stalker -> Dragonmaw Sky Stalker
+(@CGUID+785, @CGUID+457, 1679), -- Dragonmaw Sky Stalker -> Dragonmaw Sky Stalker
+(@CGUID+457, @CGUID+198, 1024), -- Dragonmaw Sky Stalker -> Supremus
+
+(@CGUID+786, @CGUID+458, 1679), -- Dragonmaw Sky Stalker -> Dragonmaw Sky Stalker
+(@CGUID+787, @CGUID+458, 1679), -- Dragonmaw Sky Stalker -> Dragonmaw Sky Stalker
+(@CGUID+458, @CGUID+198, 1024), -- Dragonmaw Sky Stalker -> Supremus
+
+(@CGUID+788, @CGUID+462, 1679), -- Dragonmaw Sky Stalker -> Dragonmaw Sky Stalker
+(@CGUID+789, @CGUID+462, 1679), -- Dragonmaw Sky Stalker -> Dragonmaw Sky Stalker
+(@CGUID+462, @CGUID+198, 1024), -- Dragonmaw Sky Stalker -> Supremus
+
+(@CGUID+790, @CGUID+463, 1679), -- Dragonmaw Sky Stalker -> Dragonmaw Sky Stalker
+(@CGUID+791, @CGUID+463, 1679), -- Dragonmaw Sky Stalker -> Dragonmaw Sky Stalker
+(@CGUID+463, @CGUID+198, 1024), -- Dragonmaw Sky Stalker -> Supremus
+
+(@CGUID+393, @CGUID+444, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+394, @CGUID+444, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+395, @CGUID+444, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+396, @CGUID+444, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+397, @CGUID+444, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
 (@CGUID+445, @CGUID+444, 1679), -- Bonechewer Taskmaster -> Bonechewer Taskmaster
 (@CGUID+444, @CGUID+198, 1024), -- Bonechewer Taskmaster -> Supremus
+(@CGUID+410, @CGUID+447, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+411, @CGUID+447, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+412, @CGUID+447, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+413, @CGUID+447, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+414, @CGUID+447, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
+(@CGUID+415, @CGUID+447, 1167), -- Bonechewer Worker -> Bonechewer Taskmaster
 (@CGUID+448, @CGUID+447, 1679), -- Bonechewer Taskmaster -> Bonechewer Taskmaster
 (@CGUID+447, @CGUID+198, 1024), -- Bonechewer Taskmaster -> Supremus
--- Needs Creature Groups or Node Sharing for Respawn/Linked Aggro to fully work, doesnt work when @CGUID+450 isnt spawned
--- (@CGUID+452, @CGUID+450, 1167), -- Dragonmaw Sky Stalker -> Dragonmaw Sky Stalker
--- (@CGUID+610, @CGUID+450, 1167), -- Dragonmaw Wind Reaver -> Dragonmaw Sky Stalker
--- (@CGUID+611, @CGUID+450, 1167), -- Dragonmaw Wind Reaver -> Dragonmaw Sky Stalker
--- (@CGUID+450, @CGUID+198, 1024), -- Dragonmaw Sky Stalker -> Supremus
 -- Shade of Akama
-(@CGUID+061, @CGUID+051, 1679), -- Ashtongue Mystic -> Ashtongue Battlelord
-(@CGUID+075, @CGUID+051, 1679), -- Ashtongue Primalist -> Ashtongue Battlelord
-(@CGUID+051, @CGUID+045, 1024), -- Ashtongue Battlelord -> Shade of Akama
-(@CGUID+054, @CGUID+063, 1679), -- Ashtongue Battlelord -> Ashtongue Mystic
-(@CGUID+069, @CGUID+063, 1679), -- Ashtongue Stormcaller -> Ashtongue Mystic
-(@CGUID+063, @CGUID+045, 1024), -- Ashtongue Mystic -> Shade of Akama
-(@CGUID+073, @CGUID+072, 1679), -- Ashtongue Primalist -> Ashtongue Primalist
-(@CGUID+072, @CGUID+045, 1024), -- Ashtongue Primalist -> Shade of Akama
-(@CGUID+058, @CGUID+048, 1679), -- Ashtongue Mystic -> Ashtongue Battlelord
-(@CGUID+071, @CGUID+048, 1679), -- Ashtongue Primalist -> Ashtongue Battlelord
-(@CGUID+080, @CGUID+048, 1679), -- Ashtongue Feral Spirit -> Ashtongue Battlelord
-(@CGUID+048, @CGUID+045, 1024), -- Ashtongue Battlelord -> Shade of Akama
-(@CGUID+060, @CGUID+050, 1679), -- Ashtongue Mystic -> Ashtongue Battlelord
-(@CGUID+074, @CGUID+050, 1679), -- Ashtongue Primalist -> Ashtongue Battlelord
-(@CGUID+081, @CGUID+050, 1679), -- Ashtongue Feral Spirit -> Ashtongue Battlelord
-(@CGUID+050, @CGUID+045, 1024), -- Ashtongue Battlelord -> Shade of Akama
-(@CGUID+086, @CGUID+091, 1679), -- Illidari Defiler -> Illidari Nightlord
-(@CGUID+098, @CGUID+091, 1679), -- Illidari Boneslicer -> Illidari Nightlord
-(@CGUID+091, @CGUID+045, 1024), -- Illidari Nightlord -> Shade of Akama
-(@CGUID+089, @CGUID+092, 1679), -- Illidari Defiler -> Illidari Nightlord
-(@CGUID+102, @CGUID+092, 1679), -- Illidari Boneslicer -> Illidari Nightlord
-(@CGUID+092, @CGUID+045, 1024), -- Illidari Nightlord -> Shade of Akama
+-- The Refectory
+(@CGUID+73, @CGUID+72, 1679), -- Ashtongue Primalist -> Ashtongue Primalist
+(@CGUID+72, @CGUID+45, 1024), -- Ashtongue Primalist -> Shade of Akama
+(@CGUID+58, @CGUID+48, 1679), -- Ashtongue Mystic -> Ashtongue Battlelord
+(@CGUID+71, @CGUID+48, 1679), -- Ashtongue Primalist -> Ashtongue Battlelord
+(@CGUID+80, @CGUID+48, 1679), -- Ashtongue Feral Spirit -> Ashtongue Battlelord
+(@CGUID+48, @CGUID+45, 1024), -- Ashtongue Battlelord -> Shade of Akama
+(@CGUID+60, @CGUID+50, 1679), -- Ashtongue Mystic -> Ashtongue Battlelord
+(@CGUID+74, @CGUID+50, 1679), -- Ashtongue Primalist -> Ashtongue Battlelord
+(@CGUID+81, @CGUID+50, 1679), -- Ashtongue Feral Spirit -> Ashtongue Battlelord
+(@CGUID+50, @CGUID+45, 1024), -- Ashtongue Battlelord -> Shade of Akama
+(@CGUID+66, @CGUID+49, 1167), -- Ashtongue Stormcaller -> Ashtongue Battlelord
+(@CGUID+67, @CGUID+49, 1167), -- Ashtongue Stormcaller -> Ashtongue Battlelord
+(@CGUID+59, @CGUID+49, 1167), -- Ashtongue Mystic -> Ashtongue Battlelord
+(@CGUID+49, @CGUID+45, 1024), -- Ashtongue Battlelord -> Shade of Akama
+(@CGUID+47, @CGUID+46, 1167), -- Ashtongue Battlelord -> Ashtongue Battlelord
+(@CGUID+65, @CGUID+46, 1167), -- Ashtongue Stormcaller -> Ashtongue Battlelord
+(@CGUID+57, @CGUID+46, 1167), -- Ashtongue Mystic -> Ashtongue Battlelord
+(@CGUID+46, @CGUID+45, 1024), -- Ashtongue Battlelord -> Shade of Akama
+(@CGUID+719, @CGUID+45, 1024), -- Ashtongue Channeler -> Shade of Akama
+(@CGUID+720, @CGUID+45, 1024), -- Ashtongue Channeler -> Shade of Akama
+(@CGUID+721, @CGUID+45, 1024), -- Ashtongue Channeler -> Shade of Akama
+(@CGUID+722, @CGUID+45, 1024), -- Ashtongue Channeler -> Shade of Akama
+(@CGUID+723, @CGUID+45, 1024), -- Ashtongue Channeler -> Shade of Akama
+(@CGUID+724, @CGUID+45, 1024), -- Ashtongue Channeler -> Shade of Akama
+-- Sanctuary of Shadows
+(@CGUID+61, @CGUID+51, 1679), -- Ashtongue Mystic -> Ashtongue Battlelord
+(@CGUID+75, @CGUID+51, 1679), -- Ashtongue Primalist -> Ashtongue Battlelord
+(@CGUID+54, @CGUID+63, 1679), -- Ashtongue Battlelord -> Ashtongue Mystic
+(@CGUID+69, @CGUID+63, 1679), -- Ashtongue Stormcaller -> Ashtongue Mystic
+(@CGUID+86, @CGUID+91, 1679), -- Illidari Defiler -> Illidari Nightlord
+(@CGUID+98, @CGUID+91, 1679), -- Illidari Boneslicer -> Illidari Nightlord
+(@CGUID+91, @CGUID+45, 1024), -- Illidari Nightlord -> Shade of Akama
+(@CGUID+89, @CGUID+92, 1679), -- Illidari Defiler -> Illidari Nightlord
+(@CGUID+102, @CGUID+92, 1679), -- Illidari Boneslicer -> Illidari Nightlord
+(@CGUID+92, @CGUID+45, 1024), -- Illidari Nightlord -> Shade of Akama
+(@CGUID+84, @CGUID+613, 1167), -- Illidari Defiler -> Illidari Centurion
+(@CGUID+94, @CGUID+613, 1167), -- Illidari Boneslicer -> Illidari Centurion
+(@CGUID+95, @CGUID+613, 1167), -- Illidari Boneslicer -> Illidari Centurion
+(@CGUID+614, @CGUID+613, 1167), -- Illidari Centurion -> Illidari Centurion
+(@CGUID+623, @CGUID+613, 1167), -- Illidari Heartseeker -> Illidari Centurion
+(@CGUID+613, @CGUID+45, 1024), -- Illidari Centurion -> Shade of Akama
+(@CGUID+85, @CGUID+615, 1167), -- Illidari Defiler -> Illidari Centurion
+(@CGUID+96, @CGUID+615, 1167), -- Illidari Boneslicer -> Illidari Centurion
+(@CGUID+97, @CGUID+615, 1167), -- Illidari Boneslicer -> Illidari Centurion
+(@CGUID+616, @CGUID+615, 1167), -- Illidari Centurion -> Illidari Centurion
+(@CGUID+624, @CGUID+615, 1167), -- Illidari Heartseeker -> Illidari Centurion
+(@CGUID+615, @CGUID+45, 1024), -- Illidari Centurion -> Shade of Akama
+(@CGUID+87, @CGUID+617, 1167), -- Illidari Defiler -> Illidari Centurion
+(@CGUID+99, @CGUID+617, 1167), -- Illidari Boneslicer -> Illidari Centurion
+(@CGUID+100, @CGUID+617, 1167), -- Illidari Boneslicer -> Illidari Centurion
+(@CGUID+618, @CGUID+617, 1167), -- Illidari Centurion -> Illidari Centurion
+(@CGUID+625, @CGUID+617, 1167), -- Illidari Heartseeker -> Illidari Centurion
+(@CGUID+617, @CGUID+45, 1024), -- Illidari Centurion -> Shade of Akama
+(@CGUID+88, @CGUID+619, 1167), -- Illidari Defiler -> Illidari Centurion
+(@CGUID+101, @CGUID+619, 1167), -- Illidari Boneslicer -> Illidari Centurion
+(@CGUID+620, @CGUID+619, 1167), -- Illidari Centurion -> Illidari Centurion
+(@CGUID+626, @CGUID+619, 1167), -- Illidari Heartseeker -> Illidari Centurion
+(@CGUID+627, @CGUID+619, 1167), -- Illidari Heartseeker -> Illidari Centurion
+(@CGUID+619, @CGUID+45, 1024), -- Illidari Centurion -> Shade of Akama
+(@CGUID+90, @CGUID+621, 1167), -- Illidari Defiler -> Illidari Centurion
+(@CGUID+103, @CGUID+621, 1167), -- Illidari Boneslicer -> Illidari Centurion
+(@CGUID+104, @CGUID+621, 1167), -- Illidari Boneslicer -> Illidari Centurion
+(@CGUID+622, @CGUID+621, 1167), -- Illidari Centurion -> Illidari Centurion
+(@CGUID+628, @CGUID+621, 1167), -- Illidari Heartseeker -> Illidari Centurion
+(@CGUID+621, @CGUID+45, 1024), -- Illidari Centurion -> Shade of Akama
+(@CGUID+435, @CGUID+45, 1024), -- Akama -> Shade of Akama
+(@CGUID+629, @CGUID+630, 1167), -- Ashtongue Stalker -> Ashtongue Stalker
+(@CGUID+772, @CGUID+773, 1167), -- Ashtongue Stalker -> Ashtongue Stalker
+(@CGUID+774, @CGUID+775, 1167), -- Ashtongue Stalker -> Ashtongue Stalker
+(@CGUID+776, @CGUID+777, 1167), -- Ashtongue Stalker -> Ashtongue Stalker
+(@CGUID+778, @CGUID+779, 1167), -- Ashtongue Stalker -> Ashtongue Stalker
+(@CGUID+55, @CGUID+56, 1167), -- Ashtongue Battlelord -> Ashtongue Battlelord
+(@CGUID+77, @CGUID+56, 1167), -- Ashtongue Primalist -> Ashtongue Battlelord
+(@CGUID+83, @CGUID+56, 1167), -- Ashtongue Feral Spirit -> Ashtongue Battlelord
+(@CGUID+70, @CGUID+56, 1167), -- Ashtongue Stormcaller -> Ashtongue Battlelord
+(@CGUID+64, @CGUID+56, 1167), -- Ashtongue Mystic -> Ashtongue Battlelord
+(@CGUID+79, @CGUID+56, 1167), -- Storm Fury -> Ashtongue Battlelord
+(@CGUID+771, @CGUID+56, 1167), -- Ashtongue Stalker -> Ashtongue Battlelord
+(@CGUID+52, @CGUID+53, 1167), -- Ashtongue Battlelord -> Ashtongue Battlelord
+(@CGUID+76, @CGUID+53, 1167), -- Ashtongue Primalist -> Ashtongue Battlelord
+(@CGUID+82, @CGUID+53, 1167), -- Ashtongue Feral Spirit -> Ashtongue Battlelord
+(@CGUID+68, @CGUID+53, 1167), -- Ashtongue Stormcaller -> Ashtongue Battlelord
+(@CGUID+62, @CGUID+53, 1167), -- Ashtongue Mystic -> Ashtongue Battlelord
+(@CGUID+78, @CGUID+53, 1167), -- Storm Fury -> Ashtongue Battlelord
+(@CGUID+780, @CGUID+53, 1167), -- Ashtongue Stalker -> Ashtongue Battlelord
+-- Gorefiend's Vigil
+(@CGUID+138, @CGUID+143, 1167), -- Shadowmoon Champion -> Shadowmoon Champion
+(@CGUID+131, @CGUID+143, 1167), -- Shadowmoon Reaver -> Shadowmoon Champion
+(@CGUID+135, @CGUID+143, 1167), -- Shadowmoon Reaver -> Shadowmoon Champion
+(@CGUID+143, @CGUID+105, 1024), -- Shadowmoon Champion -> Teron Gorefiend
+(@CGUID+282, @CGUID+132, 1167), -- Shadowmoon War Hound -> Shadowmoon Reaver
+(@CGUID+519, @CGUID+132, 1167), -- Shadowmoon Grunt -> Shadowmoon Reaver
+(@CGUID+276, @CGUID+132, 1167), -- Shadowmoon Blood Mage -> Shadowmoon Reaver
+(@CGUID+530, @CGUID+132, 1167), -- Shadowmoon Grunt -> Shadowmoon Reaver
+(@CGUID+281, @CGUID+132, 1167), -- Shadowmoon War Hound -> Shadowmoon Reaver
+(@CGUID+132, @CGUID+105, 1024), -- Shadowmoon Reaver -> Teron Gorefiend
+(@CGUID+267, @CGUID+144, 1167), -- Shadowmoon Blood Mage -> Shadowmoon Champion
+(@CGUID+268, @CGUID+144, 1167), -- Shadowmoon Blood Mage -> Shadowmoon Champion
+(@CGUID+277, @CGUID+144, 1167), -- Shadowmoon War Hound -> Shadowmoon Champion
+(@CGUID+278, @CGUID+144, 1167), -- Shadowmoon War Hound -> Shadowmoon Champion
+(@CGUID+144, @CGUID+105, 1024), -- Shadowmoon Champion -> Teron Gorefiend
+(@CGUID+279, @CGUID+140, 1167), -- Shadowmoon War Hound -> Shadowmoon Champion
+(@CGUID+280, @CGUID+140, 1167), -- Shadowmoon War Hound -> Shadowmoon Champion
+(@CGUID+136, @CGUID+140, 1167), -- Shadowmoon Reaver -> Shadowmoon Champion
+(@CGUID+137, @CGUID+140, 1167), -- Shadowmoon Reaver -> Shadowmoon Champion
+(@CGUID+518, @CGUID+140, 1167), -- Shadowmoon Grunt -> Shadowmoon Champion
+(@CGUID+520, @CGUID+140, 1167), -- Shadowmoon Grunt -> Shadowmoon Champion
+(@CGUID+140, @CGUID+105, 1024), -- Shadowmoon Champion -> Teron Gorefiend
+(@CGUID+270, @CGUID+289, 1167), -- Shadowmoon Blood Mage -> Wrathbone Flayer
+(@CGUID+269, @CGUID+289, 1167), -- Shadowmoon Blood Mage -> Wrathbone Flayer
+(@CGUID+145, @CGUID+289, 1167), -- Shadowmoon Deathshaper -> Wrathbone Flayer
+(@CGUID+146, @CGUID+289, 1167), -- Shadowmoon Deathshaper -> Wrathbone Flayer
+(@CGUID+289, @CGUID+105, 1024), -- Wrathbone Flayer -> Teron Gorefiend
+(@CGUID+492, @CGUID+500, 1167), -- Shadowmoon Soldier -> Shadowmoon Weapon Master
+(@CGUID+493, @CGUID+500, 1167), -- Shadowmoon Soldier -> Shadowmoon Weapon Master
+(@CGUID+494, @CGUID+500, 1167), -- Shadowmoon Soldier -> Shadowmoon Weapon Master
+(@CGUID+495, @CGUID+500, 1167), -- Shadowmoon Soldier -> Shadowmoon Weapon Master
+(@CGUID+496, @CGUID+500, 1167), -- Shadowmoon Soldier -> Shadowmoon Weapon Master
+(@CGUID+497, @CGUID+500, 1167), -- Shadowmoon Soldier -> Shadowmoon Weapon Master
+(@CGUID+498, @CGUID+500, 1167), -- Shadowmoon Soldier -> Shadowmoon Weapon Master
+(@CGUID+499, @CGUID+500, 1167), -- Shadowmoon Soldier -> Shadowmoon Weapon Master
+(@CGUID+500, @CGUID+105, 1024), -- Shadowmoon Weapon Master -> Teron Gorefiend
+(@CGUID+142, @CGUID+141, 1167), -- Shadowmoon Champion -> Shadowmoon Champion
+(@CGUID+133, @CGUID+141, 1167), -- Shadowmoon Reaver -> Shadowmoon Champion
+(@CGUID+134, @CGUID+141, 1167), -- Shadowmoon Reaver -> Shadowmoon Champion
+(@CGUID+141, @CGUID+105, 1024), -- Shadowmoon Champion -> Teron Gorefiend
+(@CGUID+531, @CGUID+105, 1024), -- Shadowmoon Grunt -> Teron Gorefiend
+(@CGUID+516, @CGUID+105, 1024), -- Shadowmoon Grunt -> Teron Gorefiend
+(@CGUID+521, @CGUID+529, 1167), -- Shadowmoon Grunt -> Shadowmoon Grunt
+(@CGUID+529, @CGUID+105, 1024), -- Shadowmoon Grunt -> Teron Gorefiend
+(@CGUID+522, @CGUID+105, 1024), -- Shadowmoon Grunt -> Teron Gorefiend
+(@CGUID+532, @CGUID+526, 1167), -- Shadowmoon Grunt -> Shadowmoon Grunt
+(@CGUID+526, @CGUID+105, 1024), -- Shadowmoon Grunt -> Teron Gorefiend
+(@CGUID+525, @CGUID+523, 1167), -- Shadowmoon Grunt -> Shadowmoon Grunt
+(@CGUID+523, @CGUID+105, 1024), -- Shadowmoon Grunt -> Teron Gorefiend
+(@CGUID+271, @CGUID+139, 1167), -- Shadowmoon Blood Mage -> Shadowmoon Champion
+(@CGUID+272, @CGUID+139, 1167), -- Shadowmoon Blood Mage -> Shadowmoon Champion
+(@CGUID+147, @CGUID+139, 1167), -- Shadowmoon Deathshaper -> Shadowmoon Champion
+(@CGUID+148, @CGUID+139, 1167), -- Shadowmoon Deathshaper -> Shadowmoon Champion
+(@CGUID+139, @CGUID+105, 1024), -- Shadowmoon Champion -> Teron Gorefiend
+(@CGUID+273, @CGUID+290, 1167), -- Shadowmoon Blood Mage -> Wrathbone Flayer
+(@CGUID+274, @CGUID+290, 1167), -- Shadowmoon Blood Mage -> Wrathbone Flayer
+(@CGUID+149, @CGUID+290, 1167), -- Shadowmoon Deathshaper -> Wrathbone Flayer
+(@CGUID+150, @CGUID+290, 1167), -- Shadowmoon Deathshaper -> Wrathbone Flayer
+(@CGUID+290, @CGUID+105, 1024), -- Wrathbone Flayer -> Teron Gorefiend
+(@CGUID+527, @CGUID+105, 1024), -- Shadowmoon Grunt -> Teron Gorefiend
+(@CGUID+517, @CGUID+105, 1024), -- Shadowmoon Grunt -> Teron Gorefiend
+(@CGUID+533, @CGUID+105, 1024), -- Shadowmoon Grunt -> Teron Gorefiend
+(@CGUID+524, @CGUID+105, 1024), -- Shadowmoon Grunt -> Teron Gorefiend
+(@CGUID+528, @CGUID+105, 1024), -- Shadowmoon Grunt -> Teron Gorefiend
+(@CGUID+539, @CGUID+540, 1167), -- Hand of Gorefiend -> Hand of Gorefiend
+(@CGUID+540, @CGUID+105, 1024), -- Hand of Gorefiend -> Teron Gorefiend
+(@CGUID+538, @CGUID+537, 1167), -- Hand of Gorefiend -> Hand of Gorefiend
+(@CGUID+537, @CGUID+105, 1024), -- Hand of Gorefiend -> Teron Gorefiend
 -- Teron Gorefiend
 (@CGUID+437, @CGUID+436, 1679), -- Shadowmoon Houndmaster -> Shadowmoon Houndmaster
 (@CGUID+436, @CGUID+105, 1024), -- Shadowmoon Houndmaster -> Teron Gorefiend
@@ -1983,9 +2307,228 @@ INSERT INTO `creature_linking` (`guid`, `master_guid`, `flag`) VALUES
 (@CGUID+438, @CGUID+105, 1024), -- Shadowmoon Houndmaster -> Teron Gorefiend
 (@CGUID+440, @CGUID+441, 1679), -- Shadowmoon Houndmaster -> Shadowmoon Houndmaster
 (@CGUID+441, @CGUID+105, 1024), -- Shadowmoon Houndmaster -> Teron Gorefiend
+-- Halls of Anguish
+(@CGUID+592, @CGUID+591, 1167), -- Bonechewer Shield Disciple -> Bonechewer Shield Disciple
+(@CGUID+600, @CGUID+591, 1167), -- Bonechewer Blood Prophet -> Bonechewer Shield Disciple
+(@CGUID+599, @CGUID+591, 1167), -- Bonechewer Blood Prophet -> Bonechewer Shield Disciple
+(@CGUID+583, @CGUID+591, 1167), -- Bonechewer Blade Fury -> Bonechewer Shield Disciple
+(@CGUID+584, @CGUID+591, 1167), -- Bonechewer Blade Fury -> Bonechewer Shield Disciple
+(@CGUID+577, @CGUID+591, 1167), -- Mutant War Hound -> Bonechewer Shield Disciple
+(@CGUID+578, @CGUID+591, 1167), -- Mutant War Hound -> Bonechewer Shield Disciple
+(@CGUID+591, @CGUID+284, 1024), -- Bonechewer Shield Disciple -> Gurtogg Bloodboil
+(@CGUID+590, @CGUID+589, 1167), -- Bonechewer Shield Disciple -> Bonechewer Shield Disciple
+(@CGUID+582, @CGUID+589, 1167), -- Bonechewer Blade Fury -> Bonechewer Shield Disciple
+(@CGUID+581, @CGUID+589, 1167), -- Bonechewer Blade Fury -> Bonechewer Shield Disciple
+(@CGUID+597, @CGUID+589, 1167), -- Bonechewer Blood Prophet -> Bonechewer Shield Disciple
+(@CGUID+598, @CGUID+589, 1167), -- Bonechewer Blood Prophet -> Bonechewer Shield Disciple
+(@CGUID+589, @CGUID+284, 1024), -- Bonechewer Shield Disciple -> Gurtogg Bloodboil
+(@CGUID+587, @CGUID+588, 1167), -- Bonechewer Shield Disciple -> Bonechewer Shield Disciple
+(@CGUID+595, @CGUID+588, 1167), -- Bonechewer Blood Prophet -> Bonechewer Shield Disciple
+(@CGUID+596, @CGUID+588, 1167), -- Bonechewer Blood Prophet -> Bonechewer Shield Disciple
+(@CGUID+580, @CGUID+588, 1167), -- Bonechewer Blade Fury -> Bonechewer Shield Disciple
+(@CGUID+579, @CGUID+588, 1167), -- Bonechewer Blade Fury -> Bonechewer Shield Disciple
+(@CGUID+572, @CGUID+588, 1167), -- Mutant War Hound -> Bonechewer Shield Disciple
+(@CGUID+573, @CGUID+588, 1167), -- Mutant War Hound -> Bonechewer Shield Disciple
+(@CGUID+588, @CGUID+284, 1024), -- Bonechewer Shield Disciple -> Gurtogg Bloodboil
+(@CGUID+543, @CGUID+284, 1024), -- Bonechewer Behemoth -> Gurtogg Bloodboil
+(@CGUID+544, @CGUID+284, 1024), -- Bonechewer Behemoth -> Gurtogg Bloodboil
+(@CGUID+545, @CGUID+284, 1024), -- Bonechewer Behemoth -> Gurtogg Bloodboil
 -- Gurtogg Bloodboil
+(@CGUID+603, @CGUID+548, 1167), -- Bonechewer Combatant -> Bonechewer Brawler
+(@CGUID+548, @CGUID+551, 1165), -- Bonechewer Brawler -> Bonechewer Spectator
+(@CGUID+552, @CGUID+551, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+553, @CGUID+551, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+554, @CGUID+551, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+555, @CGUID+551, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+556, @CGUID+551, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+557, @CGUID+551, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+558, @CGUID+551, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+559, @CGUID+551, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+560, @CGUID+551, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+561, @CGUID+551, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+551, @CGUID+284, 1024), -- Bonechewer Spectator -> Gurtogg Bloodboil
+(@CGUID+604, @CGUID+549, 1167), -- Bonechewer Combatant -> Bonechewer Brawler
+(@CGUID+549, @CGUID+570, 1165), -- Bonechewer Brawler -> Bonechewer Spectator
+(@CGUID+569, @CGUID+570, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+562, @CGUID+570, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+563, @CGUID+570, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+568, @CGUID+570, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+564, @CGUID+570, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+571, @CGUID+570, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+565, @CGUID+570, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+566, @CGUID+570, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+550, @CGUID+570, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+567, @CGUID+570, 1167), -- Bonechewer Spectator -> Bonechewer Spectator
+(@CGUID+570, @CGUID+284, 1024), -- Bonechewer Spectator -> Gurtogg Bloodboil
+(@CGUID+541, @CGUID+284, 1024), -- Bonechewer Behemoth -> Gurtogg Bloodboil
+(@CGUID+542, @CGUID+284, 1024), -- Bonechewer Behemoth -> Gurtogg Bloodboil
 -- Reliquary of the Lost
+-- Shrine of Lost Souls
+(@CGUID+702, @CGUID+701, 1679), -- Hungering Soul Fragment -> Hungering Soul Fragment
+(@CGUID+696, @CGUID+695, 1679), -- Hungering Soul Fragment -> Hungering Soul Fragment
+(@CGUID+700, @CGUID+699, 1679), -- Hungering Soul Fragment -> Hungering Soul Fragment
+(@CGUID+694, @CGUID+693, 1679), -- Hungering Soul Fragment -> Hungering Soul Fragment
+(@CGUID+698, @CGUID+697, 1679), -- Hungering Soul Fragment -> Hungering Soul Fragment
+(@CGUID+701, @CGUID+93, 1024), -- Hungering Soul Fragment -> Reliquary of the Lost
+(@CGUID+695, @CGUID+93, 1024), -- Hungering Soul Fragment -> Reliquary of the Lost
+(@CGUID+699, @CGUID+93, 1024), -- Hungering Soul Fragment -> Reliquary of the Lost
+(@CGUID+693, @CGUID+93, 1024), -- Hungering Soul Fragment -> Reliquary of the Lost
+(@CGUID+697, @CGUID+93, 1024), -- Hungering Soul Fragment -> Reliquary of the Lost
+(@CGUID+688, @CGUID+93, 1024), -- Suffering Soul Fragment -> Reliquary of the Lost
+(@CGUID+685, @CGUID+93, 1024), -- Suffering Soul Fragment -> Reliquary of the Lost
+(@CGUID+684, @CGUID+93, 1024), -- Suffering Soul Fragment -> Reliquary of the Lost
+(@CGUID+686, @CGUID+93, 1024), -- Suffering Soul Fragment -> Reliquary of the Lost
+(@CGUID+687, @CGUID+93, 1024), -- Suffering Soul Fragment -> Reliquary of the Lost
 -- Mother Shahraz
+(@CGUID+263, @CGUID+262, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+264, @CGUID+262, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+265, @CGUID+262, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+266, @CGUID+262, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+358, @CGUID+262, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+359, @CGUID+262, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+360, @CGUID+262, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+361, @CGUID+262, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+362, @CGUID+262, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+262, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+258, @CGUID+257, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+259, @CGUID+257, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+260, @CGUID+257, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+261, @CGUID+257, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+353, @CGUID+257, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+354, @CGUID+257, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+355, @CGUID+257, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+356, @CGUID+257, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+357, @CGUID+257, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+257, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+201, @CGUID+200, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+202, @CGUID+200, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+203, @CGUID+200, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+204, @CGUID+200, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+295, @CGUID+200, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+296, @CGUID+200, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+297, @CGUID+200, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+298, @CGUID+200, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+299, @CGUID+200, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+200, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+243, @CGUID+242, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+244, @CGUID+242, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+245, @CGUID+242, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+246, @CGUID+242, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+336, @CGUID+242, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+337, @CGUID+242, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+338, @CGUID+242, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+339, @CGUID+242, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+340, @CGUID+242, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+242, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+248, @CGUID+247, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+249, @CGUID+247, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+250, @CGUID+247, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+251, @CGUID+247, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+343, @CGUID+247, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+344, @CGUID+247, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+345, @CGUID+247, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+346, @CGUID+247, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+347, @CGUID+247, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+247, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+237, @CGUID+236, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+238, @CGUID+236, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+239, @CGUID+236, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+240, @CGUID+236, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+330, @CGUID+236, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+331, @CGUID+236, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+332, @CGUID+236, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+333, @CGUID+236, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+334, @CGUID+236, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+236, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+212, @CGUID+211, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+213, @CGUID+211, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+214, @CGUID+211, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+215, @CGUID+211, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+305, @CGUID+211, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+306, @CGUID+211, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+307, @CGUID+211, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+308, @CGUID+211, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+309, @CGUID+211, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+211, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+207, @CGUID+206, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+208, @CGUID+206, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+209, @CGUID+206, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+210, @CGUID+206, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+300, @CGUID+206, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+301, @CGUID+206, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+302, @CGUID+206, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+303, @CGUID+206, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+304, @CGUID+206, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+206, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+232, @CGUID+231, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+233, @CGUID+231, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+234, @CGUID+231, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+235, @CGUID+231, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+325, @CGUID+231, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+326, @CGUID+231, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+327, @CGUID+231, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+328, @CGUID+231, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+329, @CGUID+231, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+231, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+253, @CGUID+252, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+254, @CGUID+252, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+255, @CGUID+252, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+256, @CGUID+252, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+348, @CGUID+252, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+349, @CGUID+252, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+350, @CGUID+252, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+351, @CGUID+252, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+352, @CGUID+252, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+252, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+227, @CGUID+226, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+228, @CGUID+226, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+229, @CGUID+226, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+230, @CGUID+226, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+320, @CGUID+226, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+321, @CGUID+226, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+322, @CGUID+226, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+323, @CGUID+226, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+324, @CGUID+226, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+226, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+222, @CGUID+221, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+223, @CGUID+221, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+224, @CGUID+221, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+225, @CGUID+221, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+315, @CGUID+221, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+316, @CGUID+221, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+317, @CGUID+221, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+318, @CGUID+221, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+319, @CGUID+221, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+221, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+217, @CGUID+216, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+218, @CGUID+216, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+219, @CGUID+216, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+220, @CGUID+216, 1167), -- Temple Concubine -> Temple Concubine
+(@CGUID+310, @CGUID+216, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+311, @CGUID+216, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+312, @CGUID+216, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+313, @CGUID+216, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+314, @CGUID+216, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+216, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+335, @CGUID+241, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+241, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+341, @CGUID+205, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+342, @CGUID+205, 1167), -- Charming Courtesan -> Temple Concubine
+(@CGUID+205, @CGUID+283, 1024), -- Charming Courtesan -> Mother Shahraz
+(@CGUID+372, @CGUID+283, 1024), -- Spellbound Attendant -> Mother Shahraz
+(@CGUID+373, @CGUID+283, 1024), -- Spellbound Attendant -> Mother Shahraz
+(@CGUID+374, @CGUID+283, 1024), -- Spellbound Attendant -> Mother Shahraz
+(@CGUID+375, @CGUID+283, 1024), -- Spellbound Attendant -> Mother Shahraz
+(@CGUID+376, @CGUID+283, 1024), -- Spellbound Attendant -> Mother Shahraz
+(@CGUID+377, @CGUID+283, 1024), -- Spellbound Attendant -> Mother Shahraz
+(@CGUID+378, @CGUID+283, 1024), -- Spellbound Attendant -> Mother Shahraz
+(@CGUID+427, @CGUID+283, 1024), -- Enslaved Servant -> Mother Shahraz
+(@CGUID+428, @CGUID+283, 1024), -- Enslaved Servant -> Mother Shahraz
+(@CGUID+429, @CGUID+283, 1024), -- Enslaved Servant -> Mother Shahraz
+(@CGUID+430, @CGUID+283, 1024), -- Enslaved Servant -> Mother Shahraz
+(@CGUID+431, @CGUID+283, 1024), -- Enslaved Servant -> Mother Shahraz
+(@CGUID+432, @CGUID+283, 1024), -- Enslaved Servant -> Mother Shahraz
+(@CGUID+433, @CGUID+283, 1024), -- Enslaved Servant -> Mother Shahraz
 (@CGUID+369, @CGUID+283, 1024), -- Priestess of Dementia -> Mother Shahraz
 (@CGUID+370, @CGUID+283, 1024), -- Priestess of Dementia -> Mother Shahraz
 (@CGUID+371, @CGUID+283, 1024), -- Priestess of Dementia -> Mother Shahraz
@@ -2002,8 +2545,38 @@ INSERT INTO `creature_linking` (`guid`, `master_guid`, `flag`) VALUES
 (@CGUID+425, @CGUID+367, 1679), -- Sister of Pleasure -> Sister of Pain
 (@CGUID+367, @CGUID+283, 1024), -- Sister of Pain -> Mother Shahraz
 (@CGUID+426, @CGUID+368, 1679), -- Sister of Pleasure -> Sister of Pain
-(@CGUID+368, @CGUID+283, 1024); -- Sister of Pain -> Mother Shahraz
+(@CGUID+368, @CGUID+283, 1024), -- Sister of Pain -> Mother Shahraz
 -- The Illidari Council
+(@CGUID+631, @CGUID+285, 1024), -- Promenade Sentinel -> Gathios the Shatterer
+(@CGUID+632, @CGUID+285, 1024), -- Promenade Sentinel -> Gathios the Shatterer
+(@CGUID+633, @CGUID+285, 1024), -- Promenade Sentinel -> Gathios the Shatterer
+(@CGUID+634, @CGUID+285, 1024), -- Promenade Sentinel -> Gathios the Shatterer
+(@CGUID+635, @CGUID+285, 1024), -- Promenade Sentinel -> Gathios the Shatterer
+(@CGUID+636, @CGUID+285, 1024), -- Promenade Sentinel -> Gathios the Shatterer
+(@CGUID+644, @CGUID+643, 1167), -- Illidari Blood Lord -> Illidari Blood Lord
+(@CGUID+692, @CGUID+643, 1167), -- Illidari Archon -> Illidari Blood Lord
+(@CGUID+708, @CGUID+643, 1167), -- Illidari Battle-mage -> Illidari Blood Lord
+(@CGUID+713, @CGUID+643, 1167), -- Illidari Assassin -> Illidari Blood Lord
+(@CGUID+714, @CGUID+643, 1167), -- Illidari Assassin -> Illidari Blood Lord
+(@CGUID+643, @CGUID+285, 1024), -- Illidari Blood Lord -> Gathios the Shatterer
+(@CGUID+642, @CGUID+641, 1167), -- Illidari Blood Lord -> Illidari Blood Lord
+(@CGUID+691, @CGUID+641, 1167), -- Illidari Archon -> Illidari Blood Lord
+(@CGUID+706, @CGUID+641, 1167), -- Illidari Battle-mage -> Illidari Blood Lord
+(@CGUID+707, @CGUID+641, 1167), -- Illidari Battle-mage -> Illidari Blood Lord
+(@CGUID+712, @CGUID+641, 1167), -- Illidari Assassin -> Illidari Blood Lord
+(@CGUID+641, @CGUID+285, 1024), -- Illidari Blood Lord -> Gathios the Shatterer
+(@CGUID+640, @CGUID+639, 1167), -- Illidari Blood Lord -> Illidari Blood Lord
+(@CGUID+690, @CGUID+639, 1167), -- Illidari Archon -> Illidari Blood Lord
+(@CGUID+705, @CGUID+639, 1167), -- Illidari Battle-mage -> Illidari Blood Lord
+(@CGUID+710, @CGUID+639, 1167), -- Illidari Assassin -> Illidari Blood Lord
+(@CGUID+711, @CGUID+639, 1167), -- Illidari Assassin -> Illidari Blood Lord
+(@CGUID+639, @CGUID+285, 1024), -- Illidari Blood Lord -> Gathios the Shatterer
+(@CGUID+638, @CGUID+637, 1167), -- Illidari Blood Lord -> Illidari Blood Lord
+(@CGUID+689, @CGUID+637, 1167), -- Illidari Archon -> Illidari Blood Lord
+(@CGUID+703, @CGUID+637, 1167), -- Illidari Battle-mage -> Illidari Blood Lord
+(@CGUID+704, @CGUID+637, 1167), -- Illidari Battle-mage -> Illidari Blood Lord
+(@CGUID+709, @CGUID+637, 1167), -- Illidari Assassin -> Illidari Blood Lord
+(@CGUID+637, @CGUID+285, 1024); -- Illidari Blood Lord -> Gathios the Shatterer
 
 REPLACE INTO `creature_linking_template` (`entry`, `map`, `master_entry`, `flag`, `search_range`) VALUES
 (22950, 564, 22949, 143, 0), -- High Nethermancer Zerevor -> Gathios the Shatterer
@@ -2013,14 +2586,14 @@ REPLACE INTO `creature_linking_template` (`entry`, `map`, `master_entry`, `flag`
 (22997, 564, 22917, 4096, 0), -- Flame of Azzinoth -> Illidan Stormrage
 (23089, 564, 22917, 4096, 0), -- Akama -> Illidan Stormrage
 (23197, 564, 22917, 4096, 0), -- Maiev Shadowsong -> Illidan Stormrage
-(23215, 564, 22990, 4112, 0), -- Ashtongue Sorcerer -> Akama
-(23216, 564, 22990, 4112, 0), -- Ashtongue Defender -> Akama
+(23215, 564, 23191, 4112, 0), -- Ashtongue Sorcerer -> Akama
+(23216, 564, 23191, 4112, 0), -- Ashtongue Defender -> Akama
 (23226, 564, 22917, 4112, 0), -- Illidari Elite -> Illidan Stormrage
-(23318, 564, 22990, 4112, 0), -- Ashtongue Rogue -> Akama
+(23318, 564, 23191, 4112, 0), -- Ashtongue Rogue -> Akama
 (23375, 564, 22917, 4096, 0), -- Shadow Demon -> Illidan Stormrage
 (23498, 564, 22917, 4112, 0), -- Parasitic Shadowfiend -> Illidan Stormrage
-(23523, 564, 22990, 4112, 0), -- Ashtongue Elementalist -> Akama
-(23524, 564, 22990, 4112, 0); -- Ashtongue Spiritbinder -> Akama
+(23523, 564, 23191, 4112, 0), -- Ashtongue Elementalist -> Akama
+(23524, 564, 23191, 4112, 0); -- Ashtongue Spiritbinder -> Akama
 
 INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecsmin`, `spawntimesecsmax`, `spawndist`, `currentwaypoint`, `DeathState`, `MovementType`) VALUES
 (@CGUID+1, 1420, 564, 1, 411.252, 807.219, 13.0889, 3.84363, 7200, 7200, 5, 0, 0, 1), -- Toad
@@ -2457,7 +3030,7 @@ INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `positio
 (@CGUID+432, 22965, 564, 1, 828.2432, 413.8264, 192.8021, 5.54488, 7200, 7200, 0, 0, 0, 2), -- Enslaved Servant
 (@CGUID+433, 22965, 564, 1, 951.1917, 402.9396, 112.768, 6.27485, 7200, 7200, 0, 0, 0, 2), -- Enslaved Servant
 (@CGUID+434, 22984, 564, 1, 785.456, 464.293, 164.169, 5.34071, 7200, 7200, 0, 0, 0, 0), -- Black Temple Trigger
-(@CGUID+435, 22990, 564, 1, 544.596, 400.677, 112.784, 3.11943, 604800, 604800, 0, 0, 0, 0), -- Akama
+(@CGUID+435, 23191, 564, 1, 544.596, 400.677, 112.784, 3.11943, 604800, 604800, 0, 0, 0, 0), -- Akama
 (@CGUID+436, 23018, 564, 1, 434.989, 261.706, 172.368, 4.70618, 7200, 7200, 0, 0, 0, 2), -- Shadowmoon Houndmaster
 (@CGUID+437, 23018, 564, 1, 439.994, 262.253, 172.612, 4.70577, 7200, 7200, 0, 0, 0, 0), -- Shadowmoon Houndmaster
 (@CGUID+438, 23018, 564, 1, 458.21, 170.244, 163.981, 6.27262, 7200, 7200, 0, 0, 0, 2), -- Shadowmoon Houndmaster
@@ -2472,22 +3045,22 @@ INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `positio
 (@CGUID+447, 23028, 564, 1, 618.848, 967.643, 56.0339, 5.46778, 7200, 7200, 0, 0, 0, 2), -- Bonechewer Taskmaster
 (@CGUID+448, 23028, 564, 1, 623.037, 970.488, 56.0675, 5.46771, 7200, 7200, 0, 0, 0, 0), -- Bonechewer Taskmaster
 (@CGUID+449, 23030, 564, 1, 601.6918, 852.726, 64.19906, 5.602507, 7200, 7200, 0, 0, 0, 2), -- Dragonmaw Sky Stalker
-(@CGUID+450, 23030, 564, 1, 604.0793, 772.6408, 71.25902, 1.099557, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Sky Stalker
-(@CGUID+451, 23030, 564, 1, 622.4755, 743.4153, 182.0927, 1.643648, 7200, 7200, 150, 0, 0, 1), -- Dragonmaw Sky Stalker -- ~ 250spawndist
+-- @CGUID+450 -- REUSE
+-- @CGUID+451 -- REUSE
 (@CGUID+452, 23030, 564, 1, 623.2493, 779.8209, 71.35022, 2.740167, 7200, 7200, 0, 0, 0, 2), -- Dragonmaw Sky Stalker
 (@CGUID+453, 23030, 564, 1, 625.8873, 814.3218, 67.75632, 0.2030302, 7200, 7200, 0, 0, 0, 2), -- Dragonmaw Sky Stalker
-(@CGUID+454, 23030, 564, 1, 649.5335, 761.3539, 170.7075, 3.523889, 7200, 7200, 150, 0, 0, 1), -- Dragonmaw Sky Stalker -- ~ 250spawndist
-(@CGUID+455, 23030, 564, 1, 662.6966, 681.5464, 172.8637, 1.598467, 7200, 7200, 150, 0, 0, 1), -- Dragonmaw Sky Stalker -- ~ 250spawndist
-(@CGUID+456, 23030, 564, 1, 665.3629, 745.1495, 172.9325, 3.281955, 7200, 7200, 125, 0, 0, 1), -- Dragonmaw Sky Stalker
-(@CGUID+457, 23030, 564, 1, 678.7386, 879.4872, 171.9325, 3.150776, 7200, 7200, 0, 0, 0, 2), -- Dragonmaw Sky Stalker
+-- @CGUID+454 -- REUSE
+-- @CGUID+455 -- REUSE
+-- @CGUID+456 -- REUSE
+(@CGUID+457, 23030, 564, 1, 716.7581, 667.9764, 171.9325, 3.150776, 7200, 7200, 0, 0, 0, 2), -- Dragonmaw Sky Stalker
 (@CGUID+458, 23030, 564, 1, 697.834, 658.5719, 181.0927, 3.358212, 7200, 7200, 0, 0, 0, 2), -- Dragonmaw Sky Stalker
-(@CGUID+459, 23030, 564, 1, 713.894, 738.3996, 182.0927, 6.11481, 7200, 7200, 150, 0, 0, 1), -- Dragonmaw Sky Stalker -- ~ 250spawndist
+-- @CGUID+459 -- REUSE
 (@CGUID+460, 23030, 564, 1, 745.0646, 920.3674, 54.02595, 2.687807, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Sky Stalker
-(@CGUID+461, 23030, 564, 1, 752.6495, 947.2424, 164.2913, 2.762676, 7200, 7200, 150, 0, 0, 1), -- Dragonmaw Sky Stalker -- ~ 250spawndist
+-- @CGUID+461 -- REUSE
 (@CGUID+462, 23030, 564, 1, 756.7599, 921.978, 167.261, 2.632375, 7200, 7200, 0, 0, 0, 2), -- Dragonmaw Sky Stalker
 (@CGUID+463, 23030, 564, 1, 758.653, 869.2677, 184.5064, 3.243881, 7200, 7200, 0, 0, 0, 2), -- Dragonmaw Sky Stalker
-(@CGUID+464, 23030, 564, 1, 772.8409, 860.9445, 164.924, 3.110512, 7200, 7200, 150, 0, 0, 1), -- Dragonmaw Sky Stalker -- ~ 250spawndist
-(@CGUID+465, 23030, 564, 1, 781.2299, 855.3271, 161.4555, 3.155379, 7200, 7200, 150, 0, 0, 1), -- Dragonmaw Sky Stalker -- ~ 250spawndist
+-- @CGUID+464 -- REUSE
+-- @CGUID+465 -- REUSE
 (@CGUID+466, 23033, 564, 1, 564.068, 413.016, 211.713, 0.982765, 7200, 7200, 5, 0, 0, 1), -- Invisible Stalker (Floating)
 (@CGUID+467, 23033, 564, 1, 557.642, 404.766, 212.222, 4.1584, 7200, 7200, 5, 0, 0, 1), -- Invisible Stalker (Floating)
 (@CGUID+468, 23033, 564, 1, 569.017, 413.021, 211.276, 3.878, 7200, 7200, 5, 0, 0, 1), -- Invisible Stalker (Floating)
@@ -2628,11 +3201,11 @@ INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `positio
 (@CGUID+603, 23239, 564, 1, 888.257, 273.772, 86.2442, 2.02458, 7200, 7200, 0, 0, 0, 0), -- Bonechewer Combatant
 (@CGUID+604, 23239, 564, 1, 924.336, 191.349, 85.7246, 0.174533, 7200, 7200, 0, 0, 0, 0), -- Bonechewer Combatant
 (@CGUID+605, 23288, 564, 1, 517.166, 416.095, 141.443, 4.76475, 7200, 7200, 0, 0, 0, 0), -- Invisible Stalker (Akama)
-(@CGUID+606, 23330, 564, 1, 795.613, 702.976, 101.393, 4.34564, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Wind Reaver
-(@CGUID+607, 23330, 564, 1, 603.913, 788.877, 95.5409, 1.9333, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Wind Reaver
-(@CGUID+608, 23330, 564, 1, 778.735, 851.111, 73.4507, 0.871723, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Wind Reaver
-(@CGUID+609, 23330, 564, 1, 770.716, 878.097, 68.9106, 2.32999, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Wind Reaver
-(@CGUID+610, 23330, 564, 1, 623.249, 779.821, 71.3502, 2.74017, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Wind Reaver
+-- @CGUID+606 -- REUSE
+(@CGUID+607, 23330, 564, 1, 613.789, 817.147, 67.6669, 1.312755, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Wind Reaver
+-- @CGUID+608 -- REUSE
+-- @CGUID+609 -- REUSE
+-- @CGUID+610 -- REUSE
 (@CGUID+611, 23330, 564, 1, 604.079, 772.641, 71.259, 1.09956, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Wind Reaver
 (@CGUID+612, 23330, 564, 1, 626.741, 854.619, 64.869, 4.11898, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Wind Reaver
 (@CGUID+613, 23337, 564, 1, 599.842, 387.937, 112.822, 0.401426, 7200, 7200, 0, 0, 0, 0), -- Illidari Centurion
@@ -2715,15 +3288,15 @@ INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `positio
 (@CGUID+690, 23400, 564, 1, 558.363, 285.371, 271.746, 0.366519, 7200, 7200, 0, 0, 0, 2), -- Illidari Archon
 (@CGUID+691, 23400, 564, 1, 526.347, 262.832, 271.589, 0.907571, 7200, 7200, 0, 0, 0, 2), -- Illidari Archon
 (@CGUID+692, 23400, 564, 1, 576.823, 123.1, 258.216, 0.436332, 7200, 7200, 0, 0, 0, 2), -- Illidari Archon
-(@CGUID+693, 23401, 564, 1, 583.439, 93.3269, 112.575, 5.46468, 15, 15, 5, 0, 0, 1), -- Hungering Soul Fragment
-(@CGUID+694, 23401, 564, 1, 580.441, 89.2323, 111.168, 5.45932, 15, 15, 5, 0, 0, 1), -- Hungering Soul Fragment
-(@CGUID+695, 23401, 564, 1, 590.204, 40.2891, 112.716, 4.08324, 15, 15, 5, 0, 0, 1), -- Hungering Soul Fragment
-(@CGUID+696, 23401, 564, 1, 595.565, 39.1595, 112.715, 4.08327, 15, 15, 5, 0, 0, 1), -- Hungering Soul Fragment
-(@CGUID+697, 23401, 564, 1, 512.155, 30.0493, 113.605, 3.58807, 15, 15, 5, 0, 0, 1), -- Hungering Soul Fragment
-(@CGUID+698, 23401, 564, 1, 514.565, 25.6593, 113.5, 3.58806, 15, 15, 5, 0, 0, 1), -- Hungering Soul Fragment
-(@CGUID+699, 23401, 564, 1, 473.218, 73.2273, 111.846, 3.17182, 15, 15, 5, 0, 0, 1), -- Hungering Soul Fragment
-(@CGUID+700, 23401, 564, 1, 476.464, 78.3278, 111.853, 3.17182, 15, 15, 5, 0, 0, 1), -- Hungering Soul Fragment
-(@CGUID+701, 23401, 564, 1, 550.194, 95.3418, 112.567, 0.886959, 15, 15, 5, 0, 0, 1), -- Hungering Soul Fragment
+(@CGUID+693, 23401, 564, 1, 583.439, 93.3269, 112.575, 5.46468, 15, 15, 0, 0, 0, 2), -- Hungering Soul Fragment
+(@CGUID+694, 23401, 564, 1, 580.441, 89.2323, 111.168, 5.45932, 15, 15, 0, 0, 0, 0), -- Hungering Soul Fragment
+(@CGUID+695, 23401, 564, 1, 590.204, 40.2891, 112.716, 4.08324, 15, 15, 0, 0, 0, 2), -- Hungering Soul Fragment
+(@CGUID+696, 23401, 564, 1, 595.565, 39.1595, 112.715, 4.08327, 15, 15, 0, 0, 0, 0), -- Hungering Soul Fragment
+(@CGUID+697, 23401, 564, 1, 512.155, 30.0493, 113.605, 3.58807, 15, 15, 0, 0, 0, 2), -- Hungering Soul Fragment
+(@CGUID+698, 23401, 564, 1, 514.565, 25.6593, 113.5, 3.58806, 15, 15, 0, 0, 0, 0), -- Hungering Soul Fragment
+(@CGUID+699, 23401, 564, 1, 473.218, 73.2273, 111.846, 3.17182, 15, 15, 0, 0, 0, 2), -- Hungering Soul Fragment
+(@CGUID+700, 23401, 564, 1, 476.464, 78.3278, 111.853, 3.17182, 15, 15, 0, 0, 0, 0), -- Hungering Soul Fragment
+(@CGUID+701, 23401, 564, 1, 550.194, 95.3418, 112.567, 0.886959, 15, 15, 0, 0, 0, 2), -- Hungering Soul Fragment
 (@CGUID+702, 23401, 564, 1, 545.6, 97.619, 112.453, 0.886985, 15, 15, 0, 0, 0, 0), -- Hungering Soul Fragment
 (@CGUID+703, 23402, 564, 1, 553.594, 316.801, 271.601, 4.13643, 7200, 7200, 0, 0, 0, 0), -- Illidari Battle-mage
 (@CGUID+704, 23402, 564, 1, 548.835, 311.907, 271.467, 0.890118, 7200, 7200, 0, 0, 0, 2), -- Illidari Battle-mage
@@ -2802,13 +3375,29 @@ INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `positio
 (@CGUID+777, 23374, 564, 1, 742.5994, 290.4014, 125.2681, 0.05235988, 7200, 7200, 0, 0, 0, 0), -- Ashtongue Stalker
 (@CGUID+778, 23374, 564, 1, 702.7503, 352.3887, 125.2664, 1.972222, 7200, 7200, 0, 0, 0, 0), -- Ashtongue Stalker
 (@CGUID+779, 23374, 564, 1, 707.5325, 352.4765, 125.2653, 1.32645, 7200, 7200, 0, 0, 0, 0), -- Ashtongue Stalker
-(@CGUID+780, 23374, 564, 1, 751.6913, 380.0506, 112.7677, 1.570796, 7200, 7200, 0, 0, 0, 2); -- Ashtongue Stalker
+(@CGUID+780, 23374, 564, 1, 751.6913, 380.0506, 112.7677, 1.570796, 7200, 7200, 0, 0, 0, 2), -- Ashtongue Stalker
+(@CGUID+781, 23030, 564, 1, 663.321, 915.896, 55.944, 2.75762, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Sky Stalker
+(@CGUID+782, 23030, 564, 1, 667.795, 938.849, 54.7873, 3.42085, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Sky Stalker
+(@CGUID+783, 23030, 564, 1, 740.413, 946.561, 54.34, 3.54302, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Sky Stalker
+(@CGUID+784, 23030, 564, 1, 717.615, 694.212, 171.9325, 6.25, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Sky Stalker
+(@CGUID+785, 23030, 564, 1, 717.314, 637.741, 171.9325, 0.018406, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Sky Stalker
+(@CGUID+786, 23030, 564, 1, 698.043, 670.68, 181.093, 6.265877, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Sky Stalker
+(@CGUID+787, 23030, 564, 1, 697.539, 641.564, 181.093, 6.265877, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Sky Stalker
+(@CGUID+788, 23030, 564, 1, 742.3175, 920.8049, 167.261, 1.651852, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Sky Stalker
+(@CGUID+789, 23030, 564, 1, 781.6795, 922.1385, 167.261, 1.577239, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Sky Stalker
+(@CGUID+790, 23030, 564, 1, 758.7187, 859.0482, 184.50599, 3.148018, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Sky Stalker
+(@CGUID+791, 23030, 564, 1, 759.2268, 884.8674, 184.50599, 3.104822, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Sky Stalker
+(@CGUID+792, 23030, 564, 1, 791.9598, 864.118, 93.93944, 0, 7200, 7200, 0, 0, 0, 2), -- Dragonmaw Sky Stalker
+(@CGUID+793, 23030, 564, 1, 808.744, 752.8126, 93.69208, 0, 7200, 7200, 0, 0, 0, 2), -- Dragonmaw Sky Stalker
+(@CGUID+794, 23030, 564, 1, 687.0418, 872.5399, 81.68005, 0, 7200, 7200, 0, 0, 0, 2), -- Dragonmaw Sky Stalker
+(@CGUID+795, 23330, 564, 1, 792.3768, 876.2903, 93.939438, 6.272003, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Wind Reaver
+(@CGUID+796, 23330, 564, 1, 798.21307, 755.11657, 93.692078, 4.497001, 7200, 7200, 0, 0, 0, 0), -- Dragonmaw Wind Reaver
+(@CGUID+797, 23330, 564, 1, 701.24536, 868.2406, 81.68005, 4.418467, 7200, 7200, 0, 0, 0, 0); -- Dragonmaw Wind Reaver
 
 -- ===========
 -- GAMEOBJECTS
 -- ===========
 
-DELETE FROM `gameobject` WHERE `guid` BETWEEN @OGUID+1 AND @OGUID+25;
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecsmin`, `spawntimesecsmax`, `animprogress`, `state`) VALUES
 (@OGUID+1, 185478, 564, 1, 564.006, 400.553, 112.784, 1.56474, 0, 0, 0, 0, 180, 180, 100, 0), -- Door
 (@OGUID+2, 185479, 564, 1, 855.715, 392.976, 112.784, 1.56474, 0, 0, 0, 0, 180, 180, 100, 1), -- Door
@@ -2850,7 +3439,6 @@ INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `posit
 
 -- INSERT INTO `pool_pool` (`pool_id`, `mother_pool`, `chance`, `description`) VALUES
 
-DELETE FROM `pool_template` WHERE `entry` BETWEEN @PGUID+1 AND @PGUID+9;
 INSERT INTO `pool_template` (`entry`, `max_limit`, `description`) VALUES
 (@PGUID+1, 1, 'Black Temple - Spellbound Attendant/Enslaved Servant - Pool 1'),
 (@PGUID+2, 1, 'Black Temple - Spellbound Attendant/Enslaved Servant - Pool 2'),
@@ -2858,13 +3446,8 @@ INSERT INTO `pool_template` (`entry`, `max_limit`, `description`) VALUES
 (@PGUID+4, 1, 'Black Temple - Spellbound Attendant/Enslaved Servant - Pool 4'),
 (@PGUID+5, 1, 'Black Temple - Spellbound Attendant/Enslaved Servant - Pool 5'),
 (@PGUID+6, 1, 'Black Temple - Spellbound Attendant/Enslaved Servant - Pool 6'),
-(@PGUID+7, 1, 'Black Temple - Spellbound Attendant/Enslaved Servant - Pool 7'),
-(@PGUID+8, 1, 'Black Temple - Dragonmaw Sky Stalker/Dragonmaw Wind Reaver - Pool 1'),
-(@PGUID+9, 1, 'Black Temple - Dragonmaw Sky Stalker/Dragonmaw Wind Reaver - Pool 2');
+(@PGUID+7, 1, 'Black Temple - Spellbound Attendant/Enslaved Servant - Pool 7');
 
-DELETE FROM `pool_creature` WHERE `guid` BETWEEN @CGUID+372 AND @CGUID+378;
-DELETE FROM `pool_creature` WHERE `guid` BETWEEN @CGUID+427 AND @CGUID+433;
-DELETE FROM `pool_creature` WHERE `guid` IN(@CGUID+452,@CGUID+450,@CGUID+610,@CGUID+611);
 INSERT INTO `pool_creature` (`guid`, `pool_entry`, `chance`, `description`) VALUES
 (@CGUID+372, @PGUID+1, 0, 'Black Temple - Spellbound Attendant'),
 (@CGUID+427, @PGUID+1, 0, 'Black Temple - Enslaved Servant'),
@@ -2879,11 +3462,7 @@ INSERT INTO `pool_creature` (`guid`, `pool_entry`, `chance`, `description`) VALU
 (@CGUID+377, @PGUID+6, 0, 'Black Temple - Spellbound Attendant'),
 (@CGUID+432, @PGUID+6, 0, 'Black Temple - Enslaved Servant'),
 (@CGUID+378, @PGUID+7, 0, 'Black Temple - Spellbound Attendant'),
-(@CGUID+433, @PGUID+7, 0, 'Black Temple - Enslaved Servant'),
-(@CGUID+452, @PGUID+8, 0, 'Black Temple - Dragonmaw Sky Stalker'),
-(@CGUID+610, @PGUID+8, 0, 'Black Temple - Dragonmaw Wind Reaver'),
-(@CGUID+450, @PGUID+9, 0, 'Black Temple - Dragonmaw Sky Stalker'),
-(@CGUID+611, @PGUID+9, 0, 'Black Temple - Dragonmaw Wind Reaver');
+(@CGUID+433, @PGUID+7, 0, 'Black Temple - Enslaved Servant');
 
 -- INSERT INTO `pool_creature_template` (`id`, `pool_entry`, `chance`, `description`) VALUES
 -- INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES
