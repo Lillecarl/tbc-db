@@ -42,7 +42,7 @@ script:
   - echo "USERNAME=\"mangos\"" >> InstallFullDB.config
   - echo "PASSWORD=\"mangos\"" >> InstallFullDB.config
   - echo "MYSQL=\"mysql\"" >> InstallFullDB.config
-  - echo "CORE_PATH=\"${pwd}/mangos-tbc\"" >> InstallFullDB.config
+  - echo "CORE_PATH=\"./mangos-tbc\"" >> InstallFullDB.config
   - cat InstallFullDB.config
   - ./InstallFullDB.sh
   - mysqldump -h 127.0.0.1 -u mangos -pmangos mangos >> FullDB.sql
